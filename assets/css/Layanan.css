@@ -1,0 +1,182 @@
+/* =========================================================
+   layanan.css
+   Butuh variabel :root dari ukm.css (--neon-cyan, --card-bg, dst).
+   Kalau halaman ini nggak nge-load ukm.css, duplikasi blok :root-nya
+   di sini juga -- sama seperti kasus ukm-detail.css kemarin.
+   ========================================================= */
+
+.layanan-section{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.layanan-title{
+  padding-top: 40px ;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: rgba(0, 245, 255, 0.5);
+  text-transform: uppercase;
+  margin: 0 0 12px 0;
+  font: bold;
+}
+
+.layanan-subtitle{
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  margin: 0 0 44px 0;
+}
+
+.layanan-wrapper{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px){
+  .layanan-wrapper{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px){
+  .layanan-wrapper{ grid-template-columns: 1fr; }
+}
+
+.layanan-card{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  text-decoration: none;
+  background: #3d6c99 ;
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+/* .layanan-wrapper .layanan-card:first-child{
+  grid-column: span 4;
+  height: 400px;
+} */
+ .layanan-card.is-featured{
+  grid-column: span 4;
+  height: 400px;
+}
+@media (max-width: 520px){
+  .layanan-wrapper{ grid-template-columns: 1fr; }
+  .layanan-card.is-featured{ grid-column: span 1; } /* di mobile, semua card 1 kolom, span 2 dibatalin */
+}
+.layanan-card::after{
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 18px;
+  background: radial-gradient(
+    circle at 30% 20%,
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 18%, transparent),
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 8%, transparent) 30%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.layanan-card img{
+  width: 110%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+.layanan-card:hover::after{
+  opacity: 1;
+}
+
+.layanan-card:hover{
+  transform: translateY(-8px);
+  border-color: var(--glow-color, var(--neon-cyan));
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 35%, transparent),
+    0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.layanan-card-icon{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 15%, transparent);
+  color: var(--glow-color, var(--neon-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.layanan-card-title{
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin-bottom: 10px;
+  font: bold;
+}
+
+.layanan-card-desc{
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.layanan-card-arrow{
+  font-size: 12px;
+  color: var(--glow-color, var(--neon-cyan));
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.layanan-card:hover .layanan-card-arrow{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.layanan-card-cyan{ --glow-color: var(--neon-cyan); }
+.layanan-card-purple{ --glow-color: var(--neon-purple); }
+.layanan-card-pink{ --glow-color: var(--neon-pink); }
+.layanan-card-green{ --glow-color: var(--neon-green); }
+.layanan-card-yellow{ --glow-color: var(--neon-yellow); }
+.layanan-card-white{ --glow-color: var(--neon-white); }
+.layanan-card-orange{ --glow-color: var(--neon-orange); }
+.layanan-card-brown{ --glow-color: var(--neon-brown); }
+
+.layanan-see-all{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.layanan-see-all:hover{
+  opacity: 0.75;
+}

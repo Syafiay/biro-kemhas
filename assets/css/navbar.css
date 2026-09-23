@@ -1,0 +1,654 @@
+/* =========================================================
+   navbar.css — pure CSS, no Bootstrap
+   ========================================================= */
+
+:root{
+  /* --nav-bg: rgba(13, 20, 33, 0.88); */
+  /* --nav-bg: rgba(99, 154, 255, 0.88); */
+  --nav-bg: #3d6c99;
+
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-blur: 18px;
+
+  --accent: #2dd4bf;
+  --accent-dark: #14b8a6;
+  --accent-soft: rgba(45, 212, 191, 0.15);
+
+  --text: #f1f5f9;
+  --text-muted: rgba(241, 245, 249, 0.62);
+
+  --dropdown-bg: #101a2c;
+  --dropdown-border: rgba(255, 255, 255, 0.08);
+
+  --radius-pill: 999px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+
+  --nav-height: 68px;
+}
+
+/* Dark mode dikontrol lewat attribute [data-theme="dark"] di <html>
+   (diset oleh script dark-mode kamu), bukan class .dark-mode.
+   Navbar-nya sendiri sudah dark by default sesuai desain, jadi nggak
+   butuh override tambahan di sini. */
+[data-theme="dark"]{
+  color-scheme: dark;
+}
+
+/* ---------- reset kecil khusus elemen navbar ---------- */
+.navbar-floating, .navbar-floating *{
+  box-sizing: border-box;
+}
+.navbar-floating button{
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+.navbar-floating a{
+  text-decoration: none;
+  color: inherit;
+}
+.navbar-floating ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- navbar container (floating pill) ---------- */
+.navbar-floating{
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1200px, calc(100% - 32px));
+  z-index: 1000;
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-border);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(var(--nav-blur));
+  -webkit-backdrop-filter: blur(var(--nav-blur));
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.navbar-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 10px 0 10px;
+  gap: 12px;
+}
+
+/* ---------- brand ---------- */
+.navbar-brand-fun{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 6px 6px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.brand-logo-wrapper{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.brand-logo{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 2px solid var(--accent);
+}
+
+.brand-emoji{
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.brand-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name{
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.brand-tagline{
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ---------- menu desktop ---------- */
+.nav-menu{
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-item{
+  position: relative;
+}
+
+.nav-link{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover,
+.nav-link:focus-visible{
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link.is-active{
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.dropdown-arrow{
+  font-size: 10px;
+  transition: transform 0.25s ease;
+}
+
+.nav-item.has-dropdown.is-open > .dropdown-toggle .dropdown-arrow{
+  transform: rotate(180deg);
+}
+
+/* ---------- dropdown panel (desktop) ---------- */
+.dropdown-menu{
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 300px;
+  background:   #3d6c99;;
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 1001;
+}
+
+.dropdown-menu.dropdown-menu-end{
+  left: auto;
+  right: 0;
+}
+
+.nav-item.has-dropdown.is-open > .dropdown-menu{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  transition: background 0.15s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus-visible{
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dropdown-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.dropdown-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.dropdown-title{
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dropdown-desc{
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+/* ---------- nav actions (desktop) ---------- */
+.nav-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.nav-actions-mobile{
+  display: none;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-prayer-navbar{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--nav-border);
+}
+
+.prayer-nav-icon-wrap{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.prayer-nav-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: left;
+}
+
+.prayer-nav-label{
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+
+.prayer-nav-time-display{
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.btn-user-fun{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: #04211d;
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.btn-user-fun:hover{
+  background: var(--accent-dark);
+}
+
+.user-dropdown .dropdown-menu{
+  min-width: 220px;
+}
+
+/* ---------- dark mode toggle switch ---------- */
+.dark-mode-toggle{
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.dark-mode-checkbox{
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.toggle-track{
+  width: 52px;
+  height: 28px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--nav-border);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  transition: background 0.25s ease;
+}
+
+.dark-mode-toggle-sm .toggle-track{
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-thumb{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #04211d;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.dark-mode-toggle-sm .toggle-thumb{
+  width: 16px;
+  height: 16px;
+}
+
+.dark-mode-checkbox:checked + .toggle-track{
+  background: var(--accent-soft);
+}
+
+.dark-mode-checkbox:checked + .toggle-track .toggle-thumb{
+  transform: translateX(24px);
+}
+
+.dark-mode-toggle-sm .dark-mode-checkbox:checked + .toggle-track .toggle-thumb{
+  transform: translateX(20px);
+}
+
+.moon-icon{ display: none; }
+.dark-mode-checkbox:checked + .toggle-track .moon-icon{ display: block; }
+.dark-mode-checkbox:checked + .toggle-track .sun-icon{ display: none; }
+
+.dark-mode-checkbox:focus-visible + .toggle-track{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- mobile hamburger ---------- */
+.mobile-toggle{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mobile-toggle span{
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.mobile-toggle.is-open span:nth-child(1){
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-toggle.is-open span:nth-child(2){
+  opacity: 0;
+}
+.mobile-toggle.is-open span:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- prayer button versi mobile ---------- */
+.btn-prayer-mobile{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--nav-border);
+  font-size: 11px;
+}
+
+.prayer-mobile-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+
+#prayerMobileName{ color: var(--text-muted); font-size: 9.5px; }
+#prayerMobileTime{ color: var(--accent); font-weight: 700; font-size: 12px; }
+
+/* =========================================================
+   Responsive — breakpoint mobile
+   ========================================================= */
+@media (max-width: 991px){
+  .nav-menu{
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    background: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    border-radius: var(--radius-lg);
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+
+  .navbar-floating.is-menu-open .nav-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link{ width: 100%; }
+
+  /* dropdown di dalam mobile menu jadi accordion, nempel di alur, bukan floating */
+  .nav-item.has-dropdown .dropdown-menu{
+    position: static;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: rgba(255, 255, 255, 0.03);
+    margin-top: 4px;
+  }
+
+  .nav-item.has-dropdown.is-open .dropdown-menu{
+    display: block;
+  }
+
+  .nav-actions{ display: none; }
+  .nav-actions-mobile{ display: flex; }
+  .mobile-toggle{ display: flex; }
+
+  .brand-tagline{ display: none; }
+}
+
+@media (max-width: 480px){
+  .navbar-container{ padding-right: 6px; }
+  .btn-prayer-mobile{ display: none; }
+}
+
+/* =========================================================
+   Spinner loading
+   ========================================================= */
+.spinner-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: #0a1220;
+  transition: opacity 0.3s ease;
+}
+
+.spinner-overlay.show{ display: flex; }
+.spinner-overlay.is-hiding{ opacity: 0; pointer-events: none; }
+
+.spinner-fun-ldk{
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ldk-ring{
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent);
+  animation: ldk-spin 1.2s linear infinite;
+}
+.ldk-ring-2{
+  inset: 10px;
+  border-top-color: var(--accent-dark);
+  animation-duration: 1.8s;
+  animation-direction: reverse;
+}
+
+@keyframes ldk-spin{
+  to{ transform: rotate(360deg); }
+}
+
+.ldk-dot-orbit{
+  position: absolute;
+  inset: 0;
+  animation: ldk-spin 2.4s linear infinite;
+}
+.ldk-dot-orbit-2{ animation-duration: 3.2s; animation-direction: reverse; }
+.ldk-dot-orbit-3{ animation-duration: 4s; }
+
+.ldk-orbit-dot{
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+
+.ldk-spin-img{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ldk-spin-label{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ldk-spin-brand{
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}
+
+.ldk-spin-dots{ display: flex; gap: 4px; }
+.ldk-spin-dots span{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: ldk-dot-pulse 1.2s ease-in-out infinite;
+}
+.ldk-spin-dots span:nth-child(2){ animation-delay: 0.15s; }
+.ldk-spin-dots span:nth-child(3){ animation-delay: 0.3s; }
+
+@keyframes ldk-dot-pulse{
+  0%, 100%{ opacity: 0.3; transform: scale(0.8); }
+  50%{ opacity: 1; transform: scale(1.1); }
+}
+
+/* =========================================================
+   Dekorasi (deco-shape / deco-icon)
+   ========================================================= */
+.deco-wrapper{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.deco-shape{
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.12;
+  background: var(--accent);
+  filter: blur(2px);
+}
+
+.deco-circle-1{ width: 120px; height: 120px; top: 10%; left: 6%; }
+.deco-circle-2{ width: 80px; height: 80px; top: 60%; right: 8%; }
+.deco-circle-3{ width: 50px; height: 50px; bottom: 15%; left: 20%; }
+.deco-blob-1{ width: 200px; height: 200px; top: -60px; right: -60px; border-radius: 42% 58% 60% 40% / 45% 40% 60% 55%; }
+.deco-blob-2{ width: 160px; height: 160px; bottom: -50px; left: -50px; border-radius: 55% 45% 40% 60% / 50% 60% 40% 50%; }
+
+.deco-icon{
+  position: absolute;
+  color: var(--text-muted);
+  opacity: 0.15;
+  font-size: 22px;
+}
+
+.deco-icon-1{ top: 18%; right: 15%; }
+.deco-icon-2{ top: 40%; left: 10%; }
+.deco-icon-3{ bottom: 25%; right: 25%; }
+.deco-icon-4{ top: 70%; left: 30%; }
+.deco-icon-5{ bottom: 10%; right: 10%; }
+.deco-icon-6{ top: 8%; left: 45%; }

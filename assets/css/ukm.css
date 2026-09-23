@@ -1,0 +1,301 @@
+:root{
+  --neon-cyan: #00f5ff;
+  --neon-purple: #bf00ff;
+  --neon-pink: #ff007f;
+  --neon-green: #00ff88;
+  --neon-yellow: #ffff00;
+  --neon-white: #ffffff;
+  --neon-orange: #ff7f00;
+  --neon-brown: #8b4513;
+  --dark-bg: #050a14;
+  --card-bg: #0d1526;;
+  --card-border: rgba(0, 245, 255, 0.15);
+}
+body{
+  min-height: 100vh;
+  /* background-color: var(--dark-bg); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+body::before{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image:
+   linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink), var(--neon-green), var(--neon-yellow), var(--neon-white), var(--neon-orange), var(--neon-brown));
+  background-size: 40px 40px;
+  animation: gridMove 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridMove{
+  0%{transform: translateY(0);}
+  100%{transform: translateY(40px);}
+}
+
+.page-title{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: rgba(0, 245, 255, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  text-align: center;
+  margin-top: 100px;
+
+}
+.cards-wrapper{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  justify-content:center;
+  padding: 20px;
+  z-index: 1;
+}
+.card{
+  width: 240px;
+  padding: 36px 28px;
+  background: #3d6c99;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  transition: 
+  transform 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+  box-shadow 0.4s ease,
+  border-color 0.4s ease;
+}
+
+.card::before{
+  content:'';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--glow-color, var(--neon-cyan)), transparent);
+  transition: left 0.4s ease;
+
+}
+.card:hover::before{
+  left: 100%;
+}
+/* step 9 radial Glow Brush */
+.card::after{
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  background: radial-gradient(
+    circle at 50% 50% ,
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 18% transparent ),
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 10% transparent ) 20%,
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 5% transparent ) 30%,
+    color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 2% transparent ) 40%,
+    
+  
+  );
+  opacity: 0;
+  transition: opacity 0.4 ease;
+  pointer-events: none;
+}
+.card:hover::after{
+  opacity: 1;
+}
+
+.card:hover{
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--glow-color, var(--neon-cyan));
+  box-shadow: 
+  0 0 20px color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 40%, transparent),
+  0 0 60px color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 15%, transparent),
+  0 20px 40px rgba(0, 0, 0, 0.5) 
+}
+
+/* icon inside card */
+.card-icon{
+  font-size: 42px;
+  margin-bottom: 18px;
+  display: block;
+
+  /* float-animation */
+  animation: float ease-in-out;
+}
+.card-img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  /* object-fit: cover; */
+  display: block;
+ /* float-animation */
+ justify-content: center;
+  animation: float ease-in-out;
+  margin-left: 45px;
+  margin-bottom: 18px;
+}
+
+/* each card diffrent delay */
+
+.card:nth-child(2) .card-icon {animation-delay: -1s;}
+.card:nth-child(3) .card-icon {animation-delay: -2s;}
+.card:nth-child(4) .card-icon {animation-delay: -0.5s;}
+
+@keyframes float{
+  0%, 100%{transform: translateY(0px)}
+  50%     {transform: translateY(-8px);}
+}
+
+.card-title{
+  font-family: 'obitron' sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color:#fff;
+  margin-bottom: 10px;
+  transition: color 0.4s ease;
+
+}
+
+.card:hover .card-title{
+  color: var(--glow-color, var(--neon-cyan));
+  text-shadow: 0 0 12px var(--glow-color, var(--neon-cyan));
+}
+
+.card-desc{
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-weight: 300;
+
+}
+.card-tag{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 4px 14px;
+  border: 1px solid var(--glow-color, var(--neon-cyan));
+  border-radius: 99px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--glow-color, var(--neon-cyan));
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease 0.1s transform 0.3s  ease 0.1s;
+}
+span .card-tag{
+  color: white;
+}
+.card:hover .card-tag{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-cyan{--glow-color: var(--neon-cyan)}
+.card-purple{--glow-color: var(--neon-purple)}
+.card-pink{--glow-color: var(--neon-pink)}
+.card-green{--glow-color:var(--neon-green)}
+.card-yellow{--glow-color: var(--neon-yellow)}
+.card-white{--glow-color: var(--neon-white)}
+.card-orange{--glow-color: var(--neon-orange)}
+.card-brown{--glow-color: var(--neon-brown)}
+
+.hint{
+  margin-top:50px ;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(207, 192, 192, 0);
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  z-index: -1;
+  animation: pulse 0.2s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%, 100%{opacity: 0.4;}
+  50%     {opacity: 1;}
+}
+
+/* =========================================================
+   Dark mode
+   Diaktifkan lewat [data-theme="dark"] di <html>, sama seperti yang
+   dipakai script dark-mode kamu (bukan class .dark-mode).
+   ========================================================= */
+[data-theme="dark"] .hero{
+  background: #0a1220;
+}
+
+[data-theme="dark"] .hero-deco{
+  background: #1c3a56;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .hero-blur{
+  background: rgba(51, 103, 153, 0.25);
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .hero-title{
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .hero-sub{
+  color: rgba(241, 245, 249, 0.65);
+}
+
+[data-theme="dark"] .btn-hero-primary{
+  background: #2dd4bf;
+  color: #04211d;
+  box-shadow: 0 20px 40px rgba(45, 212, 191, 0.25);
+}
+
+[data-theme="dark"] .btn-hero-primary:hover{
+  background: #14b8a6;
+}
+
+[data-theme="dark"] .btn-hero-secondary{
+  background: rgba(255, 255, 255, 0.05);
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.25);
+}
+
+[data-theme="dark"] .btn-hero-secondary:hover{
+  background: rgba(45, 212, 191, 0.12);
+}
+
+[data-theme="dark"] .hero-carousel{
+  border-color: #101a2c;
+  background: #101a2c;
+}
+
+[data-theme="dark"] .hero-stats-card{
+  background: #101a2c;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .hero-stats-icon{
+  background: #2dd4bf;
+  color: #04211d;
+  box-shadow: 0 10px 25px rgba(45, 212, 191, 0.25);
+}
+
+[data-theme="dark"] .hero-stats-label{
+  color: rgba(241, 245, 249, 0.45);
+}
+
+[data-theme="dark"] .hero-stats-value{
+  color: #2dd4bf;
+}
+
+[data-theme="dark"] .carousel-btn{
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .carousel-btn:hover{
+  background: rgba(255, 255, 255, 0.18);
+}

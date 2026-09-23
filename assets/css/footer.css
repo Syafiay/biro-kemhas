@@ -1,0 +1,187 @@
+/* =========================================================
+   footer.css
+   ========================================================= */
+
+.site-footer{
+  position: relative;
+  background: #3d6c99;
+  color: #dbe7f2;
+  overflow: hidden;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+.site-footer *{
+  box-sizing: border-box;
+}
+
+.footer-deco{
+  position: absolute;
+  right: -60px;
+  bottom: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.footer-container{
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.3fr 2fr 1.3fr;
+  gap: 40px;
+}
+
+@media (max-width: 900px){
+  .footer-container{ grid-template-columns: 1fr 1fr; }
+  .footer-brand{ grid-column: 1 / -1; }
+}
+
+@media (max-width: 600px){
+  .footer-container{ grid-template-columns: 1fr; }
+}
+
+/* ---------- brand ---------- */
+.footer-brand-row{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-logo{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.footer-brand-text{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.footer-brand-name{
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.footer-brand-tagline{
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-desc{
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(219, 231, 242, 0.85);
+  margin: 0 0 24px 0;
+  max-width: 360px;
+}
+
+.footer-socials{
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social-btn{
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.footer-social-btn:hover{
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ---------- kolom link ---------- */
+.footer-columns{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 600px){
+  .footer-columns{ grid-template-columns: 1fr; }
+}
+
+.footer-col-title{
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 18px 0;
+}
+
+.footer-link-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-link-list a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(219, 231, 242, 0.85);
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: color 0.2s ease;
+}
+
+.footer-link-list a:hover{
+  color: #fff;
+}
+
+.footer-link-list i{
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- kontak ---------- */
+.footer-contact-item{
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.footer-contact-icon{
+  width: 20px;
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.footer-contact-text{
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(219, 231, 242, 0.9);
+  text-decoration: none;
+}
+
+a.footer-contact-text:hover{
+  color: #fff;
+  text-decoration: underline;
+}

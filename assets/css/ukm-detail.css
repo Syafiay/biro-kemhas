@@ -1,0 +1,156 @@
+/* =========================================================
+   Tambahan untuk ukm.css yang sudah ada
+   -> paste bagian ini di bawah CSS ukm.css milikmu
+   ========================================================= */
+
+/* -------- Tombol "Detail" di card (dulu card-tag cuma teks/tagline) -------- */
+a.card-tag {
+  cursor: pointer;
+  text-decoration: none;
+  /* biar tetap kebaca walau belum di-hover */
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--glow-color, var(--neon-cyan));
+}
+
+/* =========================================================
+   Halaman Detail UKM (ukm-detail.html)
+   ========================================================= */
+
+.detail-page {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 100px 20px 60px;
+  z-index: 1;
+  position: relative;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(0, 245, 255, 0.7);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--neon-cyan);
+}
+
+.detail-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 40px 36px;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 8%, transparent);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.detail-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+  object-fit: cover;
+  background: #fff;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+.detail-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin: 0 0 6px 0;
+  text-shadow: 0 0 16px color-mix(in srgb, var(--glow-color, var(--neon-cyan)) 50%, transparent);
+}
+
+.detail-desc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+  margin: 0;
+}
+
+.detail-divider {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 30px 0;
+}
+
+.detail-section-heading {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--glow-color, var(--neon-cyan));
+  margin: 0 0 12px 0;
+}
+
+.detail-about {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  margin: 0 0 34px 0;
+}
+
+.program-kerja-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 560px) {
+  .program-kerja-grid {
+    grid-template-columns: 1fr;
+  }
+  .detail-header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.program-kerja-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 300;
+}
+
+.program-kerja-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--glow-color, var(--neon-cyan));
+  color: #050a14;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.not-found-msg {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
