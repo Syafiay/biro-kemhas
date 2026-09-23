@@ -1,0 +1,2161 @@
+
+<!doctype html>
+<html lang="id" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biro AAKK - UIN Syarif Hidayatullah Jakarta</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="IMG/UIN-ICON.png">
+    <!-- Framework Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Library Ikon Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Library Marked untuk Markdown Formatting -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap");
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .animate-bounce-slow {
+        animation: bounce-slow 5s infinite ease-in-out;
+      }
+
+      @keyframes bounce-slow {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      /* Batang Gulir Kustom */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #336799;
+        border-radius: 10px;
+      }
+
+      /* Transisi Carousel Hero (Fade) */
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 0;
+      }
+      .slide.active {
+        opacity: 1;
+        z-index: 10;
+      }
+
+      /* Visibilitas Dropdown */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        background: white;
+        min-width: 260px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+        padding: 0.75rem;
+        z-index: 50;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      /* Penanganan Bagian Halaman */
+      .page-section {
+        display: none;
+      }
+      .page-section.active {
+        display: block;
+      }
+
+      /* Penyesuaian RTL (Right-to-Left) */
+      [dir="rtl"] .text-start {
+        text-align: right;
+      }
+      [dir="rtl"] .text-end {
+        text-align: left;
+      }
+
+      /* Gaya Tombol Carousel */
+      .carousel-btn {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+      }
+      .carousel-btn:hover {
+        background: #336799;
+        color: white;
+      }
+
+      .flag-icon {
+        width: 20px;
+        height: 14px;
+        object-fit: cover;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      /* AI Features Styles */
+      .chat-bubble {
+        max-width: 80%;
+        padding: 10px 15px;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .chat-user {
+        background-color: #336799;
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 2px;
+      }
+      .chat-ai {
+        background-color: #f1f5f9;
+        color: #1e293b;
+        align-self: flex-start;
+        border-bottom-left-radius: 2px;
+        border: 1px solid #e2e8f0;
+      }
+      .typing-dot {
+        width: 6px;
+        height: 6px;
+        background: #94a3b8;
+        border-radius: 50%;
+        animation: typing 1.4s infinite ease-in-out both;
+      }
+      .typing-dot:nth-child(1) {
+        animation-delay: -0.32s;
+      }
+      .typing-dot:nth-child(2) {
+        animation-delay: -0.16s;
+      }
+
+      @keyframes typing {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+
+      /* Markdown Styles in Chat */
+      .prose-sm p {
+        margin-bottom: 0.5em;
+      }
+      .prose-sm ul {
+        list-style-type: disc;
+        padding-left: 1.2em;
+        margin-bottom: 0.5em;
+      }
+      .prose-sm ol {
+        list-style-type: decimal;
+        padding-left: 1.2em;
+        margin-bottom: 0.5em;
+      }
+      .prose-sm strong {
+        font-weight: 700;
+        color: #336799;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-slate-900 overflow-x-hidden text-start">
+    <!-- NAVBAR -->
+    <nav id="mainNav" class="fixed w-full z-50 transition-all duration-500 py-3 md:py-4 text-white bg-[#336799] shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        <div class="flex justify-between items-center">
+          <!-- Logo & Judul -->
+          <div class="flex items-center gap-3 md:gap-4 cursor-pointer max-w-[75%] md:max-w-none" onclick="navigateTo('home')">
+            <div class="p-1.5 md:p-2 rounded-xl md:rounded-2xl bg-white shadow-lg flex-shrink-0">
+              <img
+                src="IMG/UIN.png"
+                onerror="this.src = 'https://upload.wikimedia.org/wikipedia/id/thumb/0/05/Logo_UIN_Syarif_Hidayatullah_Jakarta.png/200px-Logo_UIN_Syarif_Hidayatullah_Jakarta.png'"
+                alt="Logo"
+                class="h-8 w-8 md:h-10 md:w-10 object-contain"
+              />
+            </div>
+            <div>
+              <!-- Tampilan Mobile (Disingkat) -->
+              <div class="md:hidden font-black text-xs leading-tight">BIRO AAKK</div>
+              <div class="md:hidden text-[9px] font-bold tracking-wider text-blue-100">UIN JAKARTA</div>
+
+              <!-- Tampilan Desktop (Lengkap) -->
+              <div class="hidden md:block font-black text-[11px] leading-tight nav-title-main uppercase text-white">BIRO ADMINISTRASI AKADEMIK, KEMAHASISWAAN DAN KERJASAMA</div>
+              <div class="hidden md:block text-[10px] font-black tracking-[0.15em] nav-subtitle-main uppercase text-blue-100/80">UIN SYARIF HIDAYATULLAH JAKARTA</div>
+            </div>
+          </div>
+
+          <!-- Tombol Menu Mobile (Hamburger) & Search -->
+          <div class="flex lg:hidden items-center gap-3">
+            <button onclick="toggleSearch()" class="p-2 text-white/80 hover:text-white transition-colors">
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleMobileMenu()" class="p-2 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-all border border-white/10">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+
+          <!-- Menu Desktop -->
+          <div class="hidden lg:flex items-center gap-8">
+            <ul class="flex gap-6 font-black text-[11px] uppercase tracking-[0.1em]">
+              <li><button onclick="navigateTo('home')" class="nav-item-home hover:text-blue-200 transition-colors">Beranda</button></li>
+              <li class="relative dropdown">
+                <button class="flex items-center gap-1 nav-item-profile hover:text-blue-200 transition-colors text-start">Profil <i data-lucide="chevron-down" class="w-3 h-3"></i></button>
+                <div class="dropdown-content text-slate-800 text-start">
+                  <button class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-prakata">Prakata Kepala Biro AAKK</button>
+                  <button onclick="navigateTo('organisasi')" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-org-profile">ORGANISASI</button>
+                  <button class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-progker">PROGRAM KERJA</button>
+                  <button class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-kinerja">INDIKATOR KINERJA</button>
+                  <button class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-ppid">PPID PELAKSANA</button>
+                </div>
+              </li>
+              <li class="relative dropdown text-start">
+                <button class="flex items-center gap-1 nav-item-service hover:text-blue-200 transition-colors text-start">Layanan <i data-lucide="chevron-down" class="w-3 h-3 text-start"></i></button>
+                <div class="dropdown-content text-slate-800 text-start">
+                  <button onclick="navigateTo('beasiswa')" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-scholarship">Beasiswa</button>
+                  <button onclick="navigateTo('ormawa')" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-org">Organisasi Mahasiswa</button>
+                  <button onclick="navigateTo('layanan')" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-skpi">SKPI</button>
+                  <button onclick="navigateTo('prestasi')" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-prestasi">Prestasi</button>
+                  <!-- NEW MENU ITEM -->
+                  <button onclick="window.location.href='saa/index.html'" class="w-full text-start px-4 py-3 rounded-xl hover:bg-blue-50 transition-all font-bold text-xs dropdown-awards">Student Achievement Awards</button>
+                </div>
+              </li>
+              <li><button onclick="navigateTo('dokumen')" class="nav-item-doc hover:text-blue-200 transition-colors">Dokumen</button></li>
+            </ul>
+
+            <div class="flex items-center gap-6 border-l px-4 border-white/20">
+              <div class="relative dropdown text-start">
+                <button class="flex items-center gap-2 font-black text-[10px] uppercase tracking-widest hover:text-blue-200 transition-colors text-start">
+                  <img id="currentLangFlagImg" src="IMG/indo.png" onerror="this.style.display = 'none'" alt="ID" class="flag-icon" />
+                  <span id="currentLangLabel">ID</span>
+                </button>
+                <div class="dropdown-content text-slate-800 p-2 min-w-[140px] text-start">
+                  <button onclick="changeLanguage('id')" class="w-full px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-50 text-start flex items-center gap-3">
+                    <img src="IMG/indo.png" onerror="this.style.display = 'none'" alt="ID" class="flag-icon" /> Indonesia
+                  </button>
+                  <button onclick="changeLanguage('en')" class="w-full px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-50 text-start flex items-center gap-3">
+                    <img src="IMG/INGGRIS.png" onerror="this.style.display = 'none'" alt="EN" class="flag-icon" /> English
+                  </button>
+                  <button onclick="changeLanguage('ar')" class="w-full px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-50 text-start flex items-center gap-3">
+                    <img src="IMG/ARAB.png" onerror="this.style.display = 'none'" alt="AR" class="flag-icon text-start" /> العربية
+                  </button>
+                </div>
+              </div>
+              <i data-lucide="search" class="w-5 h-5 cursor-pointer hover:text-blue-400 transition-all text-start" onclick="toggleSearch()"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile Container -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-4 bg-[#2a5580] rounded-2xl p-4 shadow-inner border border-white/10 animate-in slide-in-from-top-2 duration-300">
+          <ul class="flex flex-col gap-2 text-sm font-bold text-blue-50">
+            <li>
+              <button
+                onclick="
+                  navigateTo('home');
+                  toggleMobileMenu();
+                "
+                class="w-full text-left py-3 px-4 hover:bg-white/10 rounded-xl transition-all flex items-center gap-3 nav-item-home"
+              >
+                <i data-lucide="home" class="w-4 h-4 opacity-70"></i> Beranda
+              </button>
+            </li>
+            <li class="bg-black/10 rounded-xl p-3">
+              <div class="text-[10px] uppercase tracking-widest text-blue-200/60 mb-2 px-2 font-black nav-item-profile">Profil</div>
+              <div class="flex flex-col gap-1">
+                <button onclick="toggleMobileMenu()" class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-prakata">Prakata Kepala Biro</button>
+                <button
+                  onclick="
+                    navigateTo('organisasi');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-org-profile"
+                >
+                  Organisasi
+                </button>
+                <button class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-progker">Program Kerja</button>
+              </div>
+            </li>
+            <li class="bg-black/10 rounded-xl p-3">
+              <div class="text-[10px] uppercase tracking-widest text-blue-200/60 mb-2 px-2 font-black nav-item-service">Layanan</div>
+              <div class="flex flex-col gap-1">
+                <button
+                  onclick="
+                    navigateTo('beasiswa');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-scholarship"
+                >
+                  Beasiswa
+                </button>
+                <button
+                  onclick="
+                    navigateTo('ormawa');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-org"
+                >
+                  Ormawa
+                </button>
+                <button
+                  onclick="
+                    navigateTo('layanan');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-skpi"
+                >
+                  SKPI
+                </button>
+                <button
+                  onclick="
+                    navigateTo('prestasi');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-prestasi"
+                >
+                  Prestasi
+                </button>
+                <!-- NEW MOBILE MENU ITEM -->
+                <button
+                  onclick="
+                    navigateTo('awards');
+                    toggleMobileMenu();
+                  "
+                  class="w-full text-left py-2 px-3 hover:bg-white/5 rounded-lg text-xs transition-all opacity-80 hover:opacity-100 dropdown-awards"
+                >
+                  Student Achievement Awards
+                </button>
+              </div>
+            </li>
+            <li>
+              <button
+                onclick="
+                  navigateTo('dokumen');
+                  toggleMobileMenu();
+                "
+                class="w-full text-left py-3 px-4 hover:bg-white/10 rounded-xl transition-all flex items-center gap-3 nav-item-doc"
+              >
+                <i data-lucide="file-text" class="w-4 h-4 opacity-70"></i> Dokumen
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div id="searchOverlay" class="fixed inset-0 z-[100] bg-white/95 backdrop-blur-xl hidden flex-col items-center pt-24 px-4 animate-in fade-in">
+      <button onclick="toggleSearch()" class="absolute top-8 right-8 p-3 bg-slate-100 rounded-full hover:bg-red-50 hover:text-red-600 transition-all text-start"><i data-lucide="x" class="w-8 h-8 text-start"></i></button>
+      <div class="w-full max-w-2xl text-start">
+        <div class="relative mb-12 text-start">
+          <i data-lucide="search" class="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 w-7 h-7 text-start"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Cari layanan atau beasiswa..."
+            class="w-full bg-slate-100/50 border-2 border-slate-200 focus:border-[#336799] rounded-3xl py-6 pl-16 pr-8 text-2xl font-bold focus:outline-none transition-all text-start"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- KONTEN UTAMA -->
+    <main>
+      <!-- HALAMAN BERANDA -->
+      <section id="homePage" class="page-section active">
+        <!-- Hero Section -->
+        <div class="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-white">
+          <div id="heroDeco" class="absolute top-0 right-0 w-[45%] h-full bg-[#336799] rounded-l-[80px] -z-10 shadow-2xl hidden lg:block translate-x-12 transition-all duration-700 text-start"></div>
+          <div class="absolute bottom-10 left-10 w-96 h-96 bg-blue-50 rounded-full blur-[120px] opacity-60 -z-10 text-start"></div>
+
+          <div class="max-w-7xl mx-auto px-4 md:px-8 grid lg:grid-cols-2 gap-16 items-center text-start">
+            <div class="animate-in slide-in-from-left duration-1000 text-start">
+              <h1 id="heroTitle" class="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8 text-slate-900 tracking-tight hero-title text-start">Layanan Kemahasiswaan Cerdas & Integratif</h1>
+              <p id="heroSub" class="text-xl text-slate-600 mb-12 max-w-lg leading-relaxed font-medium hero-sub text-start">
+                Pusat pelayanan administrasi digital, informasi beasiswa terpadu, dan pengembangan potensi mahasiswa UIN Syarif Hidayatullah Jakarta.
+              </p>
+              <div class="flex flex-wrap gap-5 justify-start text-start">
+                <button onclick="navigateTo('beasiswa')" class="bg-[#336799] text-white px-10 py-5 rounded-2xl font-black text-sm flex items-center gap-3 hover:bg-[#26507a] shadow-2xl hover:-translate-y-1 transition-all">
+                  <span id="heroBtn1">Info Beasiswa</span> <i data-lucide="chevron-right" class="w-5 h-5 text-start"></i>
+                </button>
+                <button class="bg-white text-[#336799] border-2 border-blue-100 px-10 py-5 rounded-2xl font-black text-sm hover:bg-blue-50 transition-all shadow-lg text-start" id="heroBtn2">Agenda Kampus</button>
+              </div>
+            </div>
+
+            <div class="relative animate-in slide-in-from-right duration-1000 group">
+              <div id="heroCarousel" class="relative rounded-[60px] overflow-hidden shadow-2xl border-[12px] border-white aspect-[4/5] lg:aspect-auto lg:h-[600px] w-full max-w-[500px] mx-auto bg-slate-100 text-start">
+                <!-- Slides Injected by JS -->
+              </div>
+              <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-start">
+                <button onclick="prevSlide()" class="p-3 rounded-full carousel-btn text-white shadow-lg text-start"><i data-lucide="chevron-left" class="w-6 h-6 text-start"></i></button>
+                <button onclick="nextSlide()" class="p-3 rounded-full carousel-btn text-white shadow-lg text-start"><i data-lucide="chevron-right" class="w-6 h-6 text-start"></i></button>
+              </div>
+              <div id="carouselDots" class="absolute bottom-8 right-12 z-30 flex gap-2"></div>
+              <div id="statsCard" class="absolute top-12 -left-8 lg:-left-12 bg-white p-8 rounded-[32px] shadow-2xl z-20 flex items-center gap-5 border border-blue-50 animate-bounce-slow text-start">
+                <div class="bg-[#336799] p-4 rounded-2xl text-white shadow-lg text-start"><i data-lucide="users" class="w-7 h-7 text-start"></i></div>
+                <div class="text-start">
+                  <p class="text-xs text-slate-400 font-black uppercase tracking-[0.15em] mb-1" id="statsLabel">Mahasiswa Aktif</p>
+                  <p class="text-3xl font-black text-[#336799]">32.000+</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Layanan Utama -->
+        <section class="py-24 bg-slate-50 text-start">
+          <div class="max-w-7xl mx-auto px-4 md:px-8 text-center text-start">
+            <h2 class="text-3xl font-black text-[#336799] mb-4 text-start" id="sectionServicesTitle">Layanan Utama</h2>
+            <div class="h-1.5 w-16 bg-[#336799] mx-auto rounded-full mb-16 opacity-30 text-start"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-start" id="servicesGrid"></div>
+          </div>
+        </section>
+
+        <!-- Berita Section -->
+        <section class="py-24 bg-white text-start">
+          <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+            <div class="flex justify-between items-end mb-16 text-start">
+              <div class="text-start">
+                <h2 class="text-3xl font-black text-[#336799] text-start" id="sectionNewsTitle">Informasi Terbaru</h2>
+                <p class="text-slate-400 mt-2 text-start" id="sectionNewsSub">Update pengumuman dan berita kemahasiswaan</p>
+              </div>
+              <button onclick="navigateTo('allNews')" class="font-bold text-[#336799] flex items-center gap-2 hover:text-[#26507a]">
+                <span id="btnAllNews">Semua Berita</span> <i data-lucide="chevron-right" class="w-5 h-5 text-start"></i>
+              </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-start" id="newsGrid"></div>
+          </div>
+        </section>
+        <section class="py-24 bg-slate-50 text-start border-t border-slate-100">
+          <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 text-start gap-6">
+              <div class="text-start">
+                <h2 class="text-3xl font-black text-[#336799] text-start" id="sectionAgendaTitle">Agenda Kampus</h2>
+                <p class="text-slate-400 mt-2 text-start" id="sectionAgendaSub">Jadwal kegiatan dan acara penting mendatamg</p>
+              </div>
+            </div>
+
+            <div id="agendaLoader" class="flex flex-col items-center justify-center py-12">
+              <div class="w-12 h-12 border-4 border-slate-200 border-t-[#336799] rounded-full animate-spin mb-4"></div>
+              <p class="text-sm font-bold text-slate-400 animate-pulse">Memuat Agenda...</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-start hidden" id="agendaGrid">
+              </div>
+            
+            <div id="agendaEmpty" class="hidden text-center py-12 bg-white rounded-3xl border border-slate-100 shadow-sm">
+                <div class="w-16 h-16 bg-blue-50 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="calendar-x" class="w-8 h-8"></i>
+                </div>
+                <h3 class="font-bold text-slate-700">Belum Ada Agenda Terjadwal</h3>
+                <p class="text-sm text-slate-500 mt-1">Nantikan informasi kegiatan selanjutnya.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- HALAMAN SEMUA BERITA -->
+      <section id="allNewsPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+          <div class="mb-12">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2 text-[#336799] font-bold mb-8 hover:gap-4 transition-all"><i data-lucide="arrow-left"></i> <span id="backToHome">Kembali ke Beranda</span></button>
+            <h2 class="text-4xl font-black text-[#336799] mb-4" id="pageAllNewsTitle">Arsip Berita & Pengumuman</h2>
+            <div class="h-1.5 w-20 bg-[#336799] rounded-full mb-6"></div>
+            <p class="text-slate-500 max-w-xl" id="pageAllNewsSub">Kumpulan seluruh informasi, berita, dan pengumuman terbaru dari Biro AAKK.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="allNewsGrid"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN DETAIL BERITA -->
+      <section id="beritaDetailPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 text-start">
+          <div id="beritaDetailBackContainer"></div>
+          <div id="beritaDetailContent" class="text-start"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN ORGANISASI -->
+      <section id="organisasiPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+          <div class="mb-16 text-center text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageOrgTitle">Struktur Organisasi Biro AAKK</h2>
+            <div class="h-1.5 w-20 bg-[#336799] mx-auto rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-2xl mx-auto text-start" id="pageOrgSub">Pengelola Administrasi Akademik, Kemahasiswaan, dan Kerjasama UIN Syarif Hidayatullah Jakarta.</p>
+          </div>
+
+          <div class="space-y-16 text-start">
+            <div class="flex justify-center text-start">
+              <div class="bg-white p-6 rounded-[40px] shadow-xl border border-slate-100 w-full max-w-sm text-center group hover:-translate-y-2 transition-all text-start">
+                <div class="w-48 h-48 bg-slate-100 rounded-3xl mx-auto mb-6 overflow-hidden border-4 border-blue-50 text-start">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 text-start" />
+                </div>
+                <h3 class="text-xl font-black text-slate-800 mb-1 text-start">Nama Kepala Biro, M.A.</h3>
+                <p class="text-[#336799] font-bold text-sm uppercase tracking-widest text-start" id="labelKabiro">Kepala Biro AAKK</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN ORMAWA -->
+      <section id="ormawaPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+          <div class="mb-16 text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageOrmawaTitle">Organisasi Mahasiswa (ORMAWA)</h2>
+            <div class="h-1.5 w-20 bg-[#336799] rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-xl text-start" id="pageOrmawaSub">Wadah aktualisasi diri dan pengembangan kepemimpinan bagi mahasiswa UIN Jakarta.</p>
+          </div>
+          <div id="ormawaGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-start"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN DETAIL ORMAWA -->
+      <section id="ormawaDetailPage" class="page-section py-32 bg-slate-50 text-start">
+        <div class="max-w-5xl mx-auto px-4 md:px-8">
+          <button onclick="navigateTo('ormawa')" class="flex items-center gap-2 text-[#336799] font-bold mb-12 hover:gap-4 transition-all"><i data-lucide="arrow-left"></i> <span id="backToOrmawa">Kembali ke Daftar Ormawa</span></button>
+          <div class="bg-white rounded-[40px] shadow-xl overflow-hidden border border-slate-100" id="ormawaDetailContainer"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN LAYANAN (SKPI) -->
+      <section id="layananPage" class="page-section py-32 bg-slate-50 text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+          <div class="flex flex-col md:flex-row gap-16 items-center text-start">
+            <div class="md:w-1/2 text-start">
+              <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageSkpiTitle">Sertifikat Pendamping Ijazah (SKPI)</h2>
+              <div class="h-1.5 w-20 bg-[#336799] rounded-full mb-8 text-start"></div>
+              <p class="text-slate-600 text-lg leading-relaxed mb-10 text-start" id="pageSkpiDesc">SKPI adalah dokumen resmi yang memuat informasi tentang pencapaian akademik atau kualifikasi lulusan perguruan tinggi.</p>
+              <div class="space-y-4 text-start">
+                <div class="flex gap-4 p-6 bg-white rounded-3xl shadow-sm border border-slate-100 text-start">
+                  <div class="w-12 h-12 bg-blue-50 text-[#336799] rounded-xl flex items-center justify-center shrink-0 text-start"><i data-lucide="check-circle" class="w-6 h-6"></i></div>
+                  <div class="text-start">
+                    <h4 class="font-bold text-slate-800 text-start" id="skpiFeature1Title">Legal & Resmi</h4>
+                    <p class="text-sm text-slate-500 text-start" id="skpiFeature1Desc">Dikeluarkan oleh Universitas secara sah.</p>
+                  </div>
+                </div>
+                <div class="flex gap-4 p-6 bg-white rounded-3xl shadow-sm border border-slate-100 text-start">
+                  <div class="w-12 h-12 bg-blue-50 text-[#336799] rounded-xl flex items-center justify-center shrink-0 text-start"><i data-lucide="upload" class="w-6 h-6"></i></div>
+                  <div class="text-start">
+                    <h4 class="font-bold text-slate-800 text-start" id="skpiFeature2Title">Input Mandiri</h4>
+                    <p class="text-sm text-slate-500 text-start" id="skpiFeature2Desc">Mahasiswa mengunggah sertifikat melalui AIS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:w-1/2 bg-white p-12 rounded-[50px] shadow-2xl border border-slate-100 text-start">
+              <h3 class="text-2xl font-black text-slate-800 mb-8 text-start" id="skpiFlowTitle">Alur Pengajuan SKPI</h3>
+              <div class="space-y-8 relative text-start">
+                <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-100 -z-10 text-start"></div>
+                <div class="flex gap-6 items-start text-start">
+                  <div class="w-12 h-12 bg-[#336799] text-white rounded-full flex items-center justify-center font-bold shadow-lg text-start">1</div>
+                  <div class="text-start">
+                    <h5 class="font-bold text-start" id="skpiStep1Title">Input Data</h5>
+                    <p class="text-sm text-slate-500 text-start" id="skpiStep1Desc">Masukkan prestasi/sertifikat di AIS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN PRESTASI -->
+      <section id="prestasiPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-[90rem] mx-auto px-4 md:px-8 text-start">
+          <div class="text-center mb-16 text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pagePrestasiTitle">Prestasi Mahasiswa</h2>
+            <div class="h-1.5 w-20 bg-[#336799] mx-auto rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-xl mx-auto text-start" id="pagePrestasiSub">Database prestasi membanggakan UIN Syarif Hidayatullah Jakarta di tingkat Nasional dan Internasional.</p>
+          </div>
+
+          <div id="prestasiGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-start mb-12"></div>
+
+          <div class="flex justify-center mb-24">
+            <button onclick="navigateTo('allPrestasi')" class="flex items-center gap-3 px-8 py-4 bg-white border-2 border-[#336799] text-[#336799] rounded-full font-bold shadow-lg hover:bg-[#336799] hover:text-white transition-all group">
+              <span id="btnMorePrestasi">Berita Selengkapnya</span> <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+
+          <div class="mb-12">
+            <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-3">
+              <span class="bg-[#336799] text-white p-2 rounded-lg"><i data-lucide="table" class="w-6 h-6"></i></span>
+              <span id="tablePrestasiTitle">Tabel Data Prestasi Terbaru</span>
+            </h3>
+            <div class="overflow-x-auto rounded-2xl shadow-2xl border border-slate-100">
+              <table class="w-full text-left border-collapse bg-white">
+                <thead class="bg-[#336799] text-white">
+                  <tr>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider rounded-tl-2xl">No</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider" id="thID">NIM</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider" id="thName">Nama Mahasiswa</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider" id="thFac">Fakultas</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider" id="thProdi">Prodi</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider text-center" id="thAch">Prestasi</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider" id="thLevel">Tingkat</th>
+                    <th class="p-5 font-bold text-sm uppercase tracking-wider rounded-tr-2xl" id="thEvent">Nama Kegiatan</th>
+                  </tr>
+                </thead>
+                <tbody id="prestasiTableBody" class="text-slate-700 font-medium"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN SEMUA PRESTASI -->
+      <section id="allPrestasiPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-[90rem] mx-auto px-4 md:px-8">
+          <div class="mb-12">
+            <button onclick="navigateTo('prestasi')" class="flex items-center gap-2 text-[#336799] font-bold mb-8 hover:gap-4 transition-all">
+              <i data-lucide="arrow-left"></i> <span id="backToPrestasiMain">Kembali ke Halaman Utama Prestasi</span>
+            </button>
+            <h2 class="text-4xl font-black text-[#336799] mb-4" id="pageAllPrestasiTitle">Arsip Lengkap Prestasi</h2>
+            <div class="h-1.5 w-20 bg-[#336799] rounded-full mb-6"></div>
+            <p class="text-slate-500 max-w-xl" id="pageAllPrestasiSub">Seluruh rekam jejak prestasi mahasiswa UIN Syarif Hidayatullah Jakarta.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="allPrestasiGrid"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN DETAIL PRESTASI -->
+      <section id="prestasiDetailPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-4xl mx-auto px-4 md:px-8 text-start">
+          <button onclick="navigateTo('prestasi')" class="flex items-center gap-2 text-[#336799] font-bold mb-12 hover:gap-4 transition-all">
+            <i data-lucide="arrow-left"></i> <span id="backToPrestasiList">Kembali ke Daftar Prestasi</span>
+          </button>
+          <div id="prestasiDetailContent" class="text-start"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN STUDENT AWARDS -->
+      <section id="awardsPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-[90rem] mx-auto px-4 md:px-8 text-start">
+          <div class="mb-16 text-center text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageAwardsTitle">Student Achievement Awards</h2>
+            <div class="h-1.5 w-20 bg-[#336799] mx-auto rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-xl mx-auto text-start" id="pageAwardsSub">Penghargaan bergengsi bagi mahasiswa berprestasi UIN Syarif Hidayatullah Jakarta.</p>
+          </div>
+
+          <!-- Grid Konten SAA (4 Tahun) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+            <!-- SAA 2026 -->
+            <div class="flex flex-col items-center space-y-6">
+              <div class="bg-white p-6 rounded-[40px] shadow-xl border border-slate-100 w-full max-w-sm text-center group hover:-translate-y-2 transition-all flex flex-col items-center h-full">
+                <div class="w-40 h-40 bg-slate-100 rounded-3xl mx-auto mb-6 overflow-hidden border-4 border-blue-50 flex items-center justify-center flex-shrink-0">
+                  <img src="IMG/SAA.jpg" onerror="this.src = 'https://placehold.co/400x400/png?text=SAA+2026'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <h3 class="text-lg font-black text-slate-800 mb-1">Student Achievement Award</h3>
+                <p class="text-[#336799] font-bold text-xs uppercase tracking-widest mb-2">Tahun Akademik 2026</p>
+              </div>
+              <a href="#" target="_blank" class="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-[#336799] text-white rounded-xl font-bold shadow-md hover:bg-[#26507a] transition-all hover:-translate-y-1 group text-sm">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>SK Penetapan (PDF)</span>
+              </a>
+            </div>
+
+            <!-- SAA 2025 (LINK PDF DITAMBAHKAN) -->
+            <div class="flex flex-col items-center space-y-6">
+              <div class="bg-white p-6 rounded-[40px] shadow-xl border border-slate-100 w-full max-w-sm text-center group hover:-translate-y-2 transition-all flex flex-col items-center h-full">
+                <div class="w-40 h-40 bg-slate-100 rounded-3xl mx-auto mb-6 overflow-hidden border-4 border-blue-50 flex items-center justify-center flex-shrink-0">
+                  <img src="IMG/SAA.jpg" onerror="this.src = 'https://placehold.co/400x400/png?text=SAA+2025'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <h3 class="text-lg font-black text-slate-800 mb-1">Student Achievement Award</h3>
+                <p class="text-[#336799] font-bold text-xs uppercase tracking-widest mb-2">Tahun Akademik 2025</p>
+              </div>
+              <!-- Link PDF diperbarui dengan encoding URL (spasi diganti %20) agar lebih kompatibel -->
+              <a
+                href="https://drive.google.com/file/d/13uUfjuBMm5r-raAGQgkjHH_XQ2fqISi6/view?usp=drive_link"
+                target="_blank"
+                class="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-[#336799] text-white rounded-xl font-bold shadow-md hover:bg-[#26507a] transition-all hover:-translate-y-1 group text-sm"
+              >
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>SK Penetapan (PDF)</span>
+              </a>
+            </div>
+
+            <!-- SAA 2024 -->
+            <div class="flex flex-col items-center space-y-6">
+              <div class="bg-white p-6 rounded-[40px] shadow-xl border border-slate-100 w-full max-w-sm text-center group hover:-translate-y-2 transition-all flex flex-col items-center h-full">
+                <div class="w-40 h-40 bg-slate-100 rounded-3xl mx-auto mb-6 overflow-hidden border-4 border-blue-50 flex items-center justify-center flex-shrink-0">
+                  <img src="IMG/SAA.jpg" onerror="this.src = 'https://placehold.co/400x400/png?text=SAA+2024'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <h3 class="text-lg font-black text-slate-800 mb-1">Student Achievement Award</h3>
+                <p class="text-[#336799] font-bold text-xs uppercase tracking-widest mb-2">Tahun Akademik 2024</p>
+              </div>
+              <a href="#" target="_blank" class="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-[#336799] text-white rounded-xl font-bold shadow-md hover:bg-[#26507a] transition-all hover:-translate-y-1 group text-sm">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>SK Penetapan (PDF)</span>
+              </a>
+            </div>
+
+            <!-- SAA 2023 -->
+            <div class="flex flex-col items-center space-y-6">
+              <div class="bg-white p-6 rounded-[40px] shadow-xl border border-slate-100 w-full max-w-sm text-center group hover:-translate-y-2 transition-all flex flex-col items-center h-full">
+                <div class="w-40 h-40 bg-slate-100 rounded-3xl mx-auto mb-6 overflow-hidden border-4 border-blue-50 flex items-center justify-center flex-shrink-0">
+                  <img src="IMG/SAA.jpg" onerror="this.src = 'https://placehold.co/400x400/png?text=SAA+2023'" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                </div>
+                <h3 class="text-lg font-black text-slate-800 mb-1">Student Achievement Award</h3>
+                <p class="text-[#336799] font-bold text-xs uppercase tracking-widest mb-2">Tahun Akademik 2023</p>
+              </div>
+              <a href="#" target="_blank" class="w-full max-w-sm flex items-center justify-center gap-2 px-6 py-3 bg-[#336799] text-white rounded-xl font-bold shadow-md hover:bg-[#26507a] transition-all hover:-translate-y-1 group text-sm">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>SK Penetapan (PDF)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HALAMAN BEASISWA -->
+      <section id="beasiswaPage" class="page-section py-32 bg-slate-50 text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+          <div class="text-center mb-20 text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageScholarshipTitle">Informasi Beasiswa</h2>
+            <div class="h-1.5 w-20 bg-[#336799] mx-auto rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-xl mx-auto text-start" id="pageScholarshipSub">Kami membantu mahasiswa menemukan peluang bantuan pendidikan terbaik.</p>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 text-start" id="scholarshipGrid"></div>
+        </div>
+      </section>
+
+      <!-- HALAMAN DOKUMEN -->
+      <section id="dokumenPage" class="page-section py-32 bg-white text-start">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-start">
+          <div class="mb-16 text-start">
+            <h2 class="text-4xl font-black text-[#336799] mb-4 text-start" id="pageDocTitle">Pusat Dokumen & Unduhan</h2>
+            <div class="h-1.5 w-24 bg-[#336799] rounded-full mb-6 text-start"></div>
+            <p class="text-slate-500 max-w-2xl text-start" id="pageDocSub">Unduh formulir dan panduan administrasi kemahasiswaan dengan mudah.</p>
+          </div>
+          <div class="bg-white rounded-[45px] shadow-2xl border border-slate-100 overflow-hidden overflow-x-auto text-start">
+            <table class="w-full text-left text-start" id="docTable">
+              <thead class="bg-[#336799] text-white text-start">
+                <tr>
+                  <th class="px-10 py-6 font-bold text-sm uppercase tracking-widest th-name text-start" id="thFileName">Nama File</th>
+                  <th class="px-10 py-6 font-bold text-sm uppercase tracking-widest th-cat text-start" id="thCategory">Kategori</th>
+                  <th class="px-10 py-6 font-bold text-sm uppercase tracking-widest th-size text-start" id="thSize">Ukuran</th>
+                  <th class="px-10 py-6 text-start"></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 text-start" id="docTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#336799] text-white pt-24 pb-12 mt-20 text-start relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-4 gap-12 relative z-10 text-start">
+        <div class="lg:col-span-1 text-start">
+          <div class="flex items-center gap-4 mb-8">
+            <img src="https://upload.wikimedia.org/wikipedia/id/thumb/0/05/Logo_UIN_Syarif_Hidayatullah_Jakarta.png/200px-Logo_UIN_Syarif_Hidayatullah_Jakarta.png" class="h-14 w-14 brightness-0 invert" alt="Logo" />
+            <div class="text-start">
+              <div class="font-black text-sm leading-tight footer-title-main text-start">BIRO AAKK</div>
+              <div class="text-[10px] font-bold text-blue-100 tracking-wider">UIN JAKARTA</div>
+            </div>
+          </div>
+          <p class="text-blue-50 text-sm leading-relaxed mb-8 footer-desc text-start" id="footerDesc">
+            Biro Administrasi Akademik, Kemahasiswaan dan Kerjasama (AAKK) melayani kebutuhan administrasi mahasiswa UIN Syarif Hidayatullah Jakarta.
+          </p>
+          <div class="flex gap-4 justify-start">
+            <div class="h-10 w-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-[#26507a] cursor-pointer transition-all text-start"><i data-lucide="instagram" class="w-5 h-5 text-white"></i></div>
+            <div class="h-10 w-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-[#26507a] cursor-pointer transition-all text-start"><i data-lucide="facebook" class="w-5 h-5 text-white"></i></div>
+            <div class="h-10 w-10 bg-white/10 rounded-xl flex items-center justify-center hover:bg-[#26507a] cursor-pointer transition-all text-start"><i data-lucide="twitter" class="w-5 h-5 text-white"></i></div>
+          </div>
+        </div>
+        <div class="text-start">
+          <h4 class="font-black text-white/80 mb-8 uppercase text-xs tracking-[0.2em] footer-links-title" id="footerLinksTitle">Tautan Penting</h4>
+          <ul class="space-y-4 text-sm font-medium text-white/70 text-start">
+            <li>
+              <a href="#" class="hover:text-white transition-all flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkPortal">Portal AIS</span></a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-all flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkLib">Perpustakaan</span></a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-all flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkJournal">E-Journal UIN</span></a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-white transition-all flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkTracer">Tracer Study</span></a>
+            </li>
+          </ul>
+        </div>
+        <div class="text-start">
+          <h4 class="font-black text-white/80 mb-8 uppercase text-xs tracking-[0.2em] footer-services-title" id="footerServicesTitle">Layanan Kami</h4>
+          <ul class="space-y-4 text-sm font-medium text-white/70 text-start">
+            <li>
+              <button onclick="navigateTo('beasiswa')" class="hover:text-white transition-all flex items-center gap-2 text-start"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkScholarship">Info Beasiswa</span></button>
+            </li>
+            <li>
+              <button onclick="navigateTo('layanan')" class="hover:text-white transition-all flex items-center gap-2 text-start"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkSkpi">Pengajuan SKPI</span></button>
+            </li>
+            <li>
+              <button onclick="navigateTo('dokumen')" class="hover:text-white transition-all flex items-center gap-2 text-start"><i data-lucide="chevron-right" class="w-3 h-3"></i> <span id="linkDocs">Unduh Formulir</span></button>
+            </li>
+          </ul>
+        </div>
+        <div class="text-start">
+          <h4 class="font-black text-white/80 mb-8 uppercase text-xs tracking-[0.2em] footer-contact-title" id="footerContactTitle">Hubungi Kami</h4>
+          <div class="space-y-6 text-sm text-white/70 text-start">
+            <div class="flex gap-4 text-start">
+              <i data-lucide="map-pin" class="w-5 h-5 text-white/60 shrink-0 text-start"></i>
+              <a href="https://maps.app.goo.gl/GCA2jwAdr197PLig6" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-all leading-relaxed">
+                Gedung Student Center, Lt. 1, Jl. Ir. H. Juanda No. 95, Ciputat, Tangerang Selatan
+              </a>
+            </div>
+            <div class="flex gap-4 text-start">
+              <i data-lucide="mail" class="w-5 h-5 text-white/60 shrink-0 text-start"></i>
+              <p class="text-start">kemahasiswaan@uinjkt.ac.id</p>
+            </div>
+            <div class="flex gap-4 text-start">
+              <i data-lucide="phone" class="w-5 h-5 text-white/60 shrink-0 text-start"></i>
+              <p class="text-start">+62 (21) 7401925</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 md:px-8 mt-20 pt-8 border-t border-white/10 flex justify-center text-center">
+        <p class="text-white/40 text-[10px] font-black uppercase tracking-[0.3em]">&copy; 2026 Kemahasiswaan Biro AAKK UIN Syarif Hidayatullah Jakarta. All Rights Reserved.</p>
+      </div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full translate-x-1/2 translate-y-1/2 text-start"></div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+      const apiKey = "";
+      const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+      const AGENDA_API_URL = "https://script.google.com/macros/s/AKfycbwsw-WmRnehxTtNdPCi5_B5K-gJqdagGjivjM9qAplut11BFcIAovL8Z9n8bqO2E3wC/exec";
+      // --- TRANSLATION DATA ---
+      const translations = {
+        id: {
+          nav: {
+            home: "Beranda",
+            profile: "Profil",
+            scholarship: "Beasiswa",
+            doc: "Dokumen",
+            prakata: "Prakata Kepala Biro AAKK",
+            organisasi: "ORGANISASI",
+            progker: "PROGRAM KERJA",
+            kinerja: "INDIKATOR KINERJA",
+            ppid: "PPID PELAKSANA",
+            org: "Organisasi",
+            service: "Layanan",
+            skpi: "SKPI",
+            prestasi: "Prestasi",
+            awards: "Student Achievement Awards",
+          },
+          hero: {
+            title: "Layanan Kemahasiswaan Cerdas & Integratif",
+            sub: "Pusat pelayanan administrasi digital, informasi beasiswa terpadu, dan pengembangan potensi mahasiswa UIN Syarif Hidayatullah Jakarta.",
+            btn1: "Info Beasiswa",
+            btn2: "Agenda Kampus",
+            stats: "Mahasiswa Aktif",
+          },
+          services: {
+            title: "Layanan Utama",
+            items: { beasiswa: "Info Beasiswa Terkini", skpi: "Sertifikat Pendamping Ijazah", ormawa: "Organisasi Mahasiswa", prestasi: "Database Prestasi" },
+          },
+          news: {
+            title: "Informasi Terbaru",
+            sub: "Update pengumuman dan berita kemahasiswaan",
+            btnAll: "Semua Berita",
+            detailBtn: "Baca Selengkapnya",
+            backHome: "Kembali ke Beranda",
+            backAll: "Kembali ke Arsip Berita",
+            close: "Tutup Berita",
+            pageAllTitle: "Arsip Berita & Pengumuman",
+            pageAllSub: "Kumpulan seluruh informasi, berita, dan pengumuman terbaru dari Biro AAKK.",
+          },
+          scholarship: { title: "Informasi Beasiswa", sub: "Kami membantu mahasiswa menemukan peluang bantuan pendidikan terbaik.", open: "Buka", closed: "Tutup", apply: "Daftar Sekarang", closedBtn: "Pendaftaran Ditutup" },
+          ormawa: {
+            title: "Organisasi Mahasiswa (ORMAWA)",
+            sub: "Wadah aktualisasi diri dan pengembangan kepemimpinan bagi mahasiswa UIN Jakarta.",
+            detailBtn: "Detail",
+            backBtn: "Kembali ke Daftar Ormawa",
+            vision: "VISI",
+            mission: "MISI",
+            history: "Sejarah Organisasi",
+            proker: "Program Kerja Tahunan",
+            about: "Tentang Organisasi",
+            bph: "Struktur Badan Pengurus Harian (BPH)",
+          },
+          skpi: {
+            title: "Sertifikat Pendamping Ijazah (SKPI)",
+            desc: "SKPI adalah dokumen resmi yang memuat informasi tentang pencapaian akademik atau kualifikasi lulusan perguruan tinggi.",
+            f1t: "Legal & Resmi",
+            f1d: "Dikeluarkan oleh Universitas secara sah.",
+            f2t: "Input Mandiri",
+            f2d: "Mahasiswa mengunggah sertifikat melalui AIS.",
+            flowTitle: "Alur Pengajuan SKPI",
+            s1t: "Input Data",
+            s1d: "Masukkan prestasi/sertifikat di AIS.",
+          },
+          prestasi: {
+            title: "Prestasi Mahasiswa",
+            sub: "Database prestasi membanggakan UIN Syarif Hidayatullah Jakarta di tingkat Nasional dan Internasional.",
+            detailBtn: "Detail Prestasi",
+            btnMore: "Berita Selengkapnya",
+            tableTitle: "Tabel Data Prestasi Terbaru",
+            pageAllTitle: "Arsip Lengkap Prestasi",
+            pageAllSub: "Seluruh rekam jejak prestasi mahasiswa UIN Syarif Hidayatullah Jakarta.",
+            backMain: "Kembali ke Halaman Utama Prestasi",
+            backList: "Kembali ke Daftar Prestasi",
+            th: { id: "NIM", name: "Nama Mahasiswa", fac: "Fakultas", prodi: "Prodi", ach: "Prestasi", level: "Tingkat", event: "Nama Kegiatan" },
+          },
+          docs: { title: "Pusat Dokumen & Unduhan", sub: "Unduh formulir dan panduan administrasi kemahasiswaan dengan mudah.", th: { name: "Nama File", cat: "Kategori", size: "Ukuran" } },
+          footer: {
+            desc: "Biro Administrasi Akademik, Kemahasiswaan dan Kerjasama (AAKK) melayani kebutuhan administrasi mahasiswa UIN Syarif Hidayatullah Jakarta.",
+            links: "Tautan Penting",
+            services: "Layanan Kami",
+            contact: "Hubungi Kami",
+            lPortal: "Portal AIS",
+            lLib: "Perpustakaan",
+            lJournal: "E-Journal UIN",
+            lTracer: "Tracer Study",
+            sSch: "Info Beasiswa",
+            sSkpi: "Pengajuan SKPI",
+            sDoc: "Unduh Formulir",
+          },
+          orgPage: {
+            title: "Struktur Organisasi Biro AAKK",
+            sub: "Pengelola Administrasi Akademik, Kemahasiswaan, dan Kerjasama UIN Syarif Hidayatullah Jakarta.",
+            kabiro: "Kepala Biro AAKK",
+            kabagAkademik: "Bagian Akademik",
+            kabagKemahasiswaan: "Bagian Kemahasiswaan",
+            kabagKerjasama: "Bagian Kerjasama",
+          },
+          agenda: { title: "Agenda Kampus", sub: "Jadwal kegiatan dan acara penting mendatang", loading: "Memuat Agenda...", emptyTitle: "Belum Ada Agenda Terjadwal", emptySub: "Nantikan informasi kegiatan selanjutnya." },
+        },
+        en: {
+          nav: {
+            home: "Home",
+            profile: "Profile",
+            scholarship: "Scholarship",
+            doc: "Documents",
+            prakata: "Preface Head of AAKK",
+            organisasi: "ORGANIZATION",
+            progker: "WORK PROGRAM",
+            kinerja: "PERFORMANCE INDICATORS",
+            ppid: "IMPLEMENTING PPID",
+            org: "Organizations",
+            service: "Services",
+            skpi: "SKPI",
+            prestasi: "Achievements",
+            awards: "Student Achievement Awards",
+          },
+          hero: {
+            title: "Smart & Integrative Student Services",
+            sub: "Digital administration center, integrated scholarship info, and student potential development at UIN Jakarta.",
+            btn1: "Scholarship Info",
+            btn2: "Campus Agenda",
+            stats: "Active Students",
+          },
+          services: {
+            title: "Main Services",
+            items: { beasiswa: "Latest Scholarship Info", skpi: "Diploma Supplement", ormawa: "Student Organizations", prestasi: "Achievement Database" },
+          },
+          news: {
+            title: "Latest Updates",
+            sub: "Update on student announcements and news",
+            btnAll: "All News",
+            detailBtn: "Read More",
+            backHome: "Back to Home",
+            backAll: "Back to News Archive",
+            close: "Close News",
+            pageAllTitle: "News & Announcements Archive",
+            pageAllSub: "Collection of all latest information, news, and announcements from AAKK Bureau.",
+          },
+          scholarship: { title: "Scholarship Information", sub: "We help students find the best educational assistance opportunities.", open: "Open", closed: "Closed", apply: "Apply Now", closedBtn: "Registration Closed" },
+          ormawa: {
+            title: "Student Organizations (ORMAWA)",
+            sub: "A place for self-actualization and leadership development for UIN Jakarta students.",
+            detailBtn: "Detail",
+            backBtn: "Back to List",
+            vision: "VISION",
+            mission: "MISSION",
+            history: "Organization History",
+            proker: "Annual Work Program",
+            about: "About Organization",
+            bph: "Daily Board Structure",
+          },
+          skpi: {
+            title: "Diploma Supplement (SKPI)",
+            desc: "SKPI is an official document containing information about academic achievements or qualifications of higher education graduates.",
+            f1t: "Legal & Official",
+            f1d: "Issued officially by the University.",
+            f2t: "Self Input",
+            f2d: "Students upload certificates via AIS.",
+            flowTitle: "SKPI Submission Flow",
+            s1t: "Input Data",
+            s1d: "Enter achievements/certificates in AIS.",
+          },
+          prestasi: {
+            title: "Student Achievements",
+            sub: "Database of proud achievements of UIN Syarif Hidayatullah Jakarta at National and International levels.",
+            detailBtn: "Achievement Detail",
+            btnMore: "More News",
+            tableTitle: "Latest Achievement Data Table",
+            pageAllTitle: "Complete Achievement Archive",
+            pageAllSub: "All achievement track records of UIN Syarif Hidayatullah Jakarta students.",
+            backMain: "Back to Main Page",
+            backList: "Back to Achievement List",
+            th: { id: "NIM", name: "Student Name", fac: "Faculty", prodi: "Study Program", ach: "Achievement", level: "Level", event: "Event Name" },
+          },
+          docs: { title: "Document & Download Center", sub: "Download student administration forms and guidelines easily.", th: { name: "File Name", cat: "Category", size: "Size" } },
+          footer: {
+            desc: "The Bureau of Academic Affairs, Student Affairs and Cooperation (AAKK) serves the administrative needs of UIN Syarif Hidayatullah Jakarta students.",
+            links: "Important Links",
+            services: "Our Services",
+            contact: "Contact Us",
+            lPortal: "AIS Portal",
+            lLib: "Library",
+            lJournal: "UIN E-Journal",
+            lTracer: "Tracer Study",
+            sSch: "Scholarship Info",
+            sSkpi: "SKPI Submission",
+            sDoc: "Download Forms",
+          },
+          orgPage: {
+            title: "Bureau AAKK Org. Structure",
+            sub: "Management of Academic, Student Affairs, and Cooperation.",
+            kabiro: "Head of AAKK Bureau",
+            kabagAkademik: "Academic Division",
+            kabagKemahasiswaan: "Student Affairs Division",
+            kabagKerjasama: "Cooperation Division",
+          },
+          agenda: { title: "Campus Agenda", sub: "Schedule of upcoming important events and activities", loading: "Loading Agenda...", emptyTitle: "No Scheduled Agenda Yet", emptySub: "Stay tuned for the next activity information." },
+        },
+        ar: {
+          nav: {
+            home: "الرئيسية",
+            profile: "الملف الشخصي",
+            scholarship: "المنح الدراسية",
+            doc: "الوثائق",
+            prakata: "مقدمة رئيس مكتب AAKK",
+            organisasi: "المنظمة",
+            progker: "برنامج العمل",
+            kinerja: "مؤشرات الأداء",
+            ppid: "تنفيذ PPID",
+            org: "المنظمات",
+            service: "الخدمات",
+            skpi: "SKPI",
+            prestasi: "الإنجازات",
+            awards: "جوائز إنجازات الطلاب",
+          },
+          hero: { title: "خدمات طلابية ذكية وتكاملية", sub: "مركز الإدارة الرقمية، ومعلومات المنح المتكاملة، وتطوير مهارات الطلاب.", btn1: "معلومات المنحة", btn2: "أجندة الجامعة", stats: "الطلاب النشطون" },
+          services: {
+            title: "الخدمات الرئيسية",
+            items: { beasiswa: "أحدث معلومات المنح", skpi: "ملحق الدبلوم", ormawa: "المنظمات الطلابية", prestasi: "قاعدة بيانات الإنجازات" },
+          },
+          news: {
+            title: "آخر التحديثات",
+            sub: "تحديثات الإعلانات والأخبار الطلابية",
+            btnAll: "كل الأخبار",
+            detailBtn: "اقرأ المزيد",
+            backHome: "العودة إلى الصفحة الرئيسية",
+            backAll: "العودة إلى أرشيف الأخبار",
+            close: "إغلاق الأخبار",
+            pageAllTitle: "أرشيف الأخبار والإعلانات",
+            pageAllSub: "مجموعة من أحدث المعلومات والأخبار والإعلانات من مكتب AAKK.",
+          },
+          scholarship: { title: "معلومات المنح الدراسية", sub: "نحن نساعد الطلاب في العثور على أفضل فرص المساعدة التعليمية.", open: "مفتوح", closed: "مغلق", apply: "قدم الآن", closedBtn: "التسجيل مغلق" },
+          ormawa: {
+            title: "المنظمات الطلابية (ORMAWA)",
+            sub: "مكان لتحقيق الذات وتنمية القيادة لطلاب جامعة جاكرتا.",
+            detailBtn: "التفاصيل",
+            backBtn: "العودة إلى القائمة",
+            vision: "الرؤية",
+            mission: "المهمة",
+            history: "تاريخ المنظمة",
+            proker: "برنامج العمل السنوي",
+            about: "عن المنظمة",
+            bph: "هيكل المجلس اليومي",
+          },
+          skpi: {
+            title: "ملحق الدبلوم (SKPI)",
+            desc: "SKPI هي وثيقة رسمية تحتوي على معلومات حول الإنجازات الأكاديمية أو مؤهلات خريجي التعليم العالي.",
+            f1t: "قانوني ورسمي",
+            f1d: "صادرة رسمياً عن الجامعة.",
+            f2t: "إدخال ذاتي",
+            f2d: "يقوم الطلاب بتحميل الشهادات عبر AIS.",
+            flowTitle: "تدفق تقديم SKPI",
+            s1t: "إدخال البيانات",
+            s1d: "أدخل الإنجازات / الشهادات في AIS.",
+          },
+          prestasi: {
+            title: "إنجازات الطلاب",
+            sub: "قاعدة بيانات الإنجازات الفخورة لجامعة جاكرتا على المستويين الوطني والدولي.",
+            detailBtn: "تفاصيل الإنجاز",
+            btnMore: "المزيد من الأخبار",
+            tableTitle: "جدول أحدث بيانات الإنجاز",
+            pageAllTitle: "أرشيف الإنجازات الكامل",
+            pageAllSub: "جميع سجلات إنجازات طلاب جامعة جاكرتا.",
+            backMain: "العودة إلى الصفحة الرئيسية للإنجازات",
+            backList: "العودة إلى قائمة الإنجازات",
+            th: { id: "رقم الطالب", name: "اسم الطالب", fac: "الكلية", prodi: "البرنامج الدراسي", ach: "الإنجاز", level: "المستوى", event: "اسم الحدث" },
+          },
+          docs: { title: "مركز الوثائق والتحميل", sub: "قم بتحميل نماذج الإدارة الطلابية والإرشادات بسهولة.", th: { name: "اسم الملف", cat: "الفئة", size: "الحجم" } },
+          footer: {
+            desc: "يقدم مكتب الشؤون الأكاديمية وشؤون الطلاب والتعاون (AAKK) الاحتياجات الإدارية لطلاب جامعة جاكرتا.",
+            links: "روابط هامة",
+            services: "خدماتنا",
+            contact: "اتصل بنا",
+            lPortal: "بوابة AIS",
+            lLib: "المكتبة",
+            lJournal: "مجلة الجامعة الإلكترونية",
+            lTracer: "دراسة التتبع",
+            sSch: "معلومات المنحة",
+            sSkpi: "تقديم SKPI",
+            sDoc: "تحميل النماذج",
+          },
+          orgPage: {
+            title: "الهيكل التنظيمي لمكتب AAKK",
+            sub: "إدارة الشؤون الأكاديمية والطلابية والتعاون.",
+            kabiro: "رئيس مكتب AAKK",
+            kabagAkademik: "قسم الشؤون الأكاديمية",
+            kabagKemahasiswaan: "قسم شؤون الطلاب",
+            kabagKerjasama: "قسم التعاون",
+          },
+          agenda: { title: "أجندة الحرم الجامعي", sub: "جدول الأحداث والأنشطة الهامة القادمة", loading: "تحميل الأجندة...", emptyTitle: "لا توجد أجندة مجدولة بعد", emptySub: "ترقبوا معلومات النشاط التالي." },
+        },
+      };
+
+      const slides = [
+        { url: "IMG/IPK.jpg", title: "KIP Kuliah 2026", caption: "Segera Daftar! Pendaftaran KIP Kuliah 2026 Resmi Dibuka" },
+        { url: "IMG/WISUDA.JPG", title: "Wisuda UIN", caption: "Persiapan Wisuda Sarjana & Pascasarjana Periode Januari" },
+        { url: "IMG/WORKSHOP.jpg", title: "Workshop Soft Skill", caption: "Membangun Karakter Mahasiswa Unggul di Era Digital" },
+        { url: "IMG/IKHTIAR.jpg", title: "Pesta Prestasi", caption: "Penyerahan Penghargaan Mahasiswa Berprestasi Nasional" },
+        { url: "IMG/SPAN.jpg", title: "Digital AAKK", caption: "Layanan Legalisir Ijazah Kini Bisa Dilakukan Secara Online" },
+      ];
+
+      // --- Data ---
+      const scholarshipData = [
+        { type: "Internal", name: "Beasiswa Prestasi UIN", status: "Buka", desc: "Apresiasi bagi mahasiswa dengan IPK tertinggi di setiap program studi." },
+        { type: "Pemerintah", name: "KIP Kuliah", status: "Tutup", desc: "Program bantuan biaya pendidikan bagi mahasiswa berpotensi akademik tinggi." },
+        { type: "Eksternal", name: "Beasiswa Bank Indonesia", status: "Buka", desc: "Program beasiswa dan pengembangan kepemimpinan dari Bank Indonesia." },
+      ];
+
+      const newsData = [
+        {
+          id: 1,
+          tag: "Beasiswa",
+          title: "Pendaftaran Beasiswa Bank Indonesia Tahun 2026",
+          date: "12 Jan 2026",
+          image: "IMG/OVT.jpg",
+          content: "Bank Indonesia membuka pendaftaran beasiswa mahasiswa untuk tahun 2026. Beasiswa ini tersedia bagi mahasiswa aktif jenjang sarjana.",
+        },
+        { id: 2, tag: "Kegiatan", title: "Workshop Strategi Penulisan Jurnal Ilmiah", date: "10 Jan 2026", image: "IMG/OVT.jpg", content: "Workshop ini bertujuan untuk membekali mahasiswa dalam penulisan jurnal ilmiah internasional." },
+        { id: 3, tag: "Pengumuman", title: "Pemilihan Mahasiswa Berprestasi (PILMAPRES)", date: "08 Jan 2026", image: "IMG/OVT.jpg", content: "UIN Jakarta kembali menyelenggarakan PILMAPRES untuk menjaring mahasiswa terbaik." },
+      ];
+
+      const allNewsData = [
+        ...newsData,
+        { id: 4, tag: "Akademik", title: "Jadwal Pengisian KRS Semester Genap 2026", date: "05 Jan 2026", image: "IMG/UIN.png", content: "Pengisian Kartu Rencana Studi (KRS) dimulai tanggal 20 Januari." },
+        { id: 5, tag: "Beasiswa", title: "Pengumuman Lolos Seleksi Wawancara KIP", date: "02 Jan 2026", image: "IMG/IPK.jpg", content: "Berikut nama-nama mahasiswa yang lolos seleksi wawancara KIP Kuliah." },
+        { id: 6, tag: "Prestasi", title: "Delegasi UIN Juara Umum MTQ Nasional", date: "28 Des 2025", image: "IMG/ARAB.png", content: "Kontingen UIN Jakarta berhasil membawa pulang piala juara umum." },
+        { id: 7, tag: "Kegiatan", title: "Pekan Seni Mahasiswa Daerah (PEKSIMIDA)", date: "20 Des 2025", image: "IMG/SPAN.jpg", content: "Ayo dukung perwakilan kampusmu di ajang PEKSIMIDA tahun ini." },
+        { id: 8, tag: "Pengumuman", title: "Libur Perkuliahan Akhir Tahun", date: "15 Des 2025", image: "IMG/UIN.png", content: "Libur perkuliahan dimulai tanggal 25 Desember hingga 5 Januari." },
+        { id: 9, tag: "Beasiswa", title: "Sosialisasi Beasiswa LPDP", date: "10 Des 2025", image: "IMG/INGGRIS.png", content: "Webinar sosialisasi beasiswa LPDP untuk tingkat Magister dan Doktor." },
+      ];
+
+      const docData = [
+        { name: "Panduan KIP 2026.pdf", cat: "Beasiswa", size: "2.4 MB" },
+        { name: "Form Pendaftaran UKM.docx", cat: "Ormawa", size: "150 KB" },
+      ];
+
+      const serviceData = [
+        { id: "beasiswa", icon: "graduation-cap", color: "bg-blue-50", target: "beasiswa" },
+        { id: "skpi", icon: "file-text", color: "bg-slate-50", target: "layanan" },
+        { id: "ormawa", icon: "users", color: "bg-blue-50", target: "ormawa" },
+        { id: "prestasi", icon: "award", color: "bg-slate-50", target: "prestasi" },
+      ];
+
+      // --- Data Ormawa (22 Item) ---
+      const ormawaData = [
+        {
+          name: "DEMA",
+          desc: "Dewan Eksekutif Mahasiswa",
+          image: "IMG/UIN.png",
+          definition: "Lembaga eksekutif mahasiswa yang bertugas melaksanakan program kerja kemahasiswaan di tingkat universitas.",
+          structure: { ketua: "Ketua DEMA", wakil: "Wakil Ketua", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "DEMA UIN Jakarta merupakan kelanjutan dari Badan Eksekutif Mahasiswa (BEM) yang bertugas sebagai eksekutor kegiatan kemahasiswaan di tingkat universitas, berdiri untuk mengorganisir potensi mahasiswa.",
+          vision: "Mewujudkan DEMA UIN Jakarta sebagai katalisator pergerakan mahasiswa yang progresif, inovatif, dan kolaboratif.",
+          mission: ["Mengembangkan potensi akademik dan non-akademik mahasiswa.", "Membangun sinergitas antar ormawa.", "Melakukan advokasi terhadap isu-isu kemahasiswaan dan kebangsaan."],
+          program: ["PBAK (Pengenalan Budaya Akademik dan Kemahasiswaan)", "UIN Festival", "Sekolah Kebangsaan", "Desa Binaan"],
+        },
+        {
+          name: "SEMA",
+          desc: "Senat Mahasiswa",
+          image: "IMG/UIN.png",
+          definition: "Lembaga legislatif mahasiswa yang memiliki fungsi aspirasi, legislasi, dan pengawasan di tingkat universitas.",
+          structure: { ketua: "Ketua SEMA", wakil: "Wakil Ketua", sekretaris: "Nama Sekretaris", bendahara: "Nama Bendahara" },
+          history:
+            "Senat Mahasiswa UIN Syarif Hidayatullah Jakarta didirikan sebagai representasi suara mahasiswa dalam pengambilan kebijakan kampus. Sejak reformasi, SEMA bertransformasi menjadi lembaga legislatif modern yang menjunjung tinggi demokrasi kampus.",
+          vision: "Terwujudnya SEMA UIN Jakarta sebagai lembaga legislatif yang aspiratif, responsif, dan berintegritas demi kemaslahatan mahasiswa.",
+          mission: ["Menampung dan memperjuangkan aspirasi mahasiswa.", "Mengawasi kinerja lembaga eksekutif mahasiswa.", "Melahirkan produk hukum yang berkeadilan bagi seluruh civitas akademika."],
+          program: ["Sidang Paripurna Mahasiswa", "Legislative School", "Serap Aspirasi Akbar", "Studi Banding Parlemen Kampus"],
+        },
+        {
+          name: "MENWA",
+          desc: "Resimen Mahasiswa.",
+          image: "IMG/MENWA.jpg",
+          definition: "Resimen Mahasiswa (Menwa) adalah salah satu kekuatan sipil yang dilatih dan dipersiapkan untuk mempertahankan NKRI sebagai perwujudan Sistem Pertahanan dan Keamanan Rakyat Semesta.",
+          structure: { ketua: "Komandan Satuan", wakil: "Wakil Komandan", sekretaris: "Kepala Staf", bendahara: "Bendahara Satuan" },
+          history: "Menwa UIN Jakarta merupakan satuan yang memiliki sejarah panjang dalam bela negara dan kedisiplinan, turut serta dalam berbagai operasi kemanusiaan dan pengamanan kampus.",
+          vision: "Terwujudnya anggota Resimen Mahasiswa yang disiplin, tangkas, dan setia pada Pancasila dan UUD 1945.",
+          mission: ["Menanamkan nilai-nilai kedisiplinan dan wawasan kebangsaan.", "Meningkatkan kemampuan fisik dan mental anggota.", "Membantu keamanan dan ketertiban lingkungan kampus."],
+          program: ["Pendidikan Dasar Militer (Diksarmil)", "Latihan Gabungan", "Pengamanan Wisuda", "Seminar Wawasan Kebangsaan"],
+        },
+        {
+          name: "LPM Institut",
+          desc: "Lembaga Pers Mahasiswa.",
+          image: "IMG/LPM.jpg",
+          definition: "LPM Institut adalah lembaga pers mahasiswa yang bergerak di bidang jurnalistik dan penerbitan kampus.",
+          structure: { ketua: "Pemimpin Umum", wakil: "Pemimpin Redaksi", sekretaris: "Sekretaris Redaksi", bendahara: "Bendahara" },
+          history: "LPM Institut memiliki sejarah panjang sebagai kontrol sosial di kampus, menyajikan berita independen dan kritis seputar UIN Jakarta dan isu nasional.",
+          vision: "Menjadi lembaga pers mahasiswa yang independen, kritis, dan profesional.",
+          mission: ["Melakukan peliputan berita kampus.", "Menerbitkan majalah dan berita online.", "Mengadakan pelatihan jurnalistik."],
+          program: ["Diklat Jurnalistik Tingkat Dasar", "Penerbitan Majalah Institut", "Diskusi Publik", "Liputan Khusus"],
+        },
+        {
+          name: "KOPMA",
+          desc: "Koperasi Mahasiswa.",
+          image: "IMG/KOPMA.jpg",
+          definition: "Koperasi Mahasiswa (Kopma) adalah organisasi yang bergerak di bidang kewirausahaan dan kesejahteraan anggota melalui usaha koperasi.",
+          structure: { ketua: "Ketua Umum", wakil: "Ketua Bidang Usaha", sekretaris: "Sekretaris Umum", bendahara: "Bendahara Umum" },
+          history: "Kopma didirikan pertama kali dengan nama Kopma IAIN Jakarta dan statusnya belum legal pada tahun 1986. Pada anggal 2 Mei 1996 Kopa IAIN Jakarta melakukan perubahan AD/ART yang menyesuaikan UU No.26 Tahun 1992...",
+          vision: "Menjadikan Kopma UIN Jakarta sebagai organisasi yang inovatif, progresif, berkolaborasi...",
+          mission: ["Terbinanya insan yang bertanggung jawab...", "Meningkatkan komunikasi dan koordinasi..."],
+          program: ["Pendidikan Dasar Koperasi", "Bazaar Kewirausahaan", "Rapat Anggota Tahunan (RAT)", "Pengembangan Unit Bisnis"],
+        },
+        {
+          name: "KMPLHK – RANITA",
+          desc: "Radio Mahasiswa UIN Jakarta.",
+          image: "IMG/RANITA.jpg",
+          definition: "Radio Kampus (RANITA) adalah media penyiaran komunitas kampus yang dikelola oleh mahasiswa.",
+          structure: { ketua: "Station Manager", wakil: "Program Director", sekretaris: "Secretary", bendahara: "Treasurer" },
+          history: "RANITA mengudara sebagai suara mahasiswa UIN Jakarta...",
+          vision: "Menjadi radio kampus terdepan yang informatif dan menghibur.",
+          mission: ["Menyajikan program siaran berkualitas.", "Melatih skill public speaking..."],
+          program: ["RANITA School of Broadcasting", "Siaran Harian", "Music Chart", "Talkshow Kampus"],
+        },
+        {
+          name: "HIQMA",
+          desc: "Himpunan Qari dan Qariah Mahasiswa.",
+          image: "IMG/HIQMA.jpg",
+          definition: "Himpunan Qari dan Qariah Mahasiswa (HIQMA) adalah UKM yang mewadahi mahasiswa dalam seni tilawah dan kajian Al-Qur'an.",
+          structure: { ketua: "Ketua HIQMA", wakil: "Wakil Ketua", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "HIQMA merupakan wadah bagi para pecinta Al-Qur'an di UIN Jakarta...",
+          vision: "Mewujudkan generasi Qur'ani yang berprestasi dan berakhlakul karimah.",
+          mission: ["Melakukan pembinaan rutin tilawah...", "Mengadakan syiar Al-Qur'an..."],
+          program: ["Haflah Tilawah", "Pembinaan MTQ", "HIQMA Festival", "Khataman Al-Qur'an Rutin"],
+        },
+        {
+          name: "Teater Syahid",
+          desc: "Seni peran dan pertunjukan.",
+          image: "IMG/THEATER.jpg",
+          definition: "Teater Syahid adalah UKM yang bergerak di bidang seni peran, teater, dan pertunjukan budaya.",
+          structure: { ketua: "Lurah Teater", wakil: "Wakil Lurah", sekretaris: "Carik", bendahara: "Juru Uang" },
+          history: "Teater Syahid telah melahirkan banyak seniman dan aktor berbakat...",
+          vision: "Menjadi pusat laboratorium teater yang religius, kreatif, dan inovatif.",
+          mission: ["Melaksanakan pementasan teater berkualitas.", "Mengadakan pelatihan keaktoran..."],
+          program: ["Pentas Studi", "Pentas Tunggal", "Festival Teater Kampus", "Workshop Keaktoran"],
+        },
+        {
+          name: "Pramuka",
+          desc: "Gerakan kepanduan mahasiswa.",
+          image: "IMG/PRAMUKA.jpg",
+          definition: "Unit Kegiatan Mahasiswa Pramuka adalah wadah pembinaan karakter, kepemimpinan, dan keterampilan kepanduan bagi mahasiswa.",
+          structure: { ketua: "Ketua Dewan", wakil: "-", sekretaris: "Pemangku Adat", bendahara: "Kerani" },
+          history: "UKM Pramuka UIN Jakarta telah berdiri sejak lama sebagai gugus depan...",
+          vision: "Menjadi UKM terdepan dalam pembentukan karakter mahasiswa...",
+          mission: ["Melaksanakan latihan rutin kepramukaan.", "Mengadakan kegiatan pengabdian masyarakat."],
+          program: ["Perkemahan Wirakarya", "Kursus Pembina Pramuka Mahir Tingkat Dasar (KMD)"],
+        },
+        {
+          name: "KPA – ARKADIA",
+          desc: "Kelompok Pecinta Alam",
+          image: "IMG/ARKADIA.jpg",
+          definition: "Mahasiswa penggiat alam bebas.",
+          structure: { ketua: "Ketua Umum", wakil: "-", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "Menjelajah alam...",
+          vision: "Cinta alam dan kasih sayang sesama manusia.",
+          mission: ["Konservasi", "Explorasi"],
+          program: ["Diksar", "Ekspedisi Gunung"],
+        },
+        {
+          name: "PSM",
+          desc: "Paduan Suara Mahasiswa.",
+          image: "IMG/PSM.jpg",
+          definition: "Wadah seni tarik suara...",
+          structure: { ketua: "Ketua", wakil: "Wakil", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "LDK Syahid",
+          desc: "Lembaga Dakwah Kampus.",
+          image: "IMG/LDK.jpg",
+          definition: "Pusat kegiatan Islam...",
+          structure: { ketua: "Ketua", wakil: "Wakil", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "FORSA",
+          desc: "Forum Mahasiswa Syariah dan Hukum.",
+          image: "IMG/FORSA.jpg",
+          definition: "Wadah kajian hukum...",
+          structure: { ketua: "Ketua", wakil: "Wakil", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "KMM – RIAK",
+          desc: "Komunitas Musik Mahasiswa",
+          image: "IMG/KMM.jpg",
+          definition: "Wadah apresiasi musik...",
+          structure: { ketua: "Ketua", wakil: "Wakil", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "KSR – PMI",
+          desc: "Korps Sukarela Palang Merah Indonesia.",
+          image: "IMG/KSR.jpg",
+          definition: "Relawan kemanusiaan...",
+          structure: { ketua: "Komandan", wakil: "Wadan", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "Bahasa FLAT",
+          desc: "Foreign Languages Association.",
+          image: "IMG/FLAT.jpg",
+          definition: "Pengembangan bahasa asing...",
+          structure: { ketua: "President", wakil: "VP", sekretaris: "Secretary", bendahara: "Treasurer" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "KMF KALACITRA",
+          desc: "Komunitas Mahasiswa Fotografi",
+          image: "IMG/KALACITRA.jpg",
+          definition: "Peminat seni fotografi.",
+          structure: { ketua: "Lurah", wakil: "-", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "Marching Band",
+          desc: "Unit Marching Band",
+          image: "IMG/MB.jpg",
+          definition: "Seni musik orkestra...",
+          structure: { ketua: "FC", wakil: "-", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "FORMABI-KIP",
+          desc: "Forum Mahasiswa Bidikmisi & KIP",
+          image: "IMG/FORMABI.jpg",
+          definition: "Wadah silaturahmi...",
+          structure: { ketua: "Ketua", wakil: "Wakil", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "FRESH",
+          desc: "Forum Riset dan Karya Ilmiah",
+          image: "IMG/FRESH.jpg",
+          definition: "Komunitas peneliti...",
+          structure: { ketua: "Direktur", wakil: "-", sekretaris: "Sekretaris", bendahara: "Bendahara" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "AIESEC",
+          desc: "International Student Organization",
+          image: "IMG/AIESEC.jpg",
+          definition: "Organisasi kepemimpinan...",
+          structure: { ketua: "LCP", wakil: "VP", sekretaris: "-", bendahara: "-" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+        {
+          name: "Kemahasiswaan",
+          desc: "Pusat Layanan Administrasi",
+          image: "IMG/KMHS.jpg",
+          definition: "Unit kerja layanan...",
+          structure: { ketua: "Kabag", wakil: "Kasubbag", sekretaris: "Staf", bendahara: "-" },
+          history: "...",
+          vision: "...",
+          mission: ["..."],
+          program: ["..."],
+        },
+      ];
+
+      // --- Data Prestasi Berita (Kartu) ---
+      const prestasiData = Array.from({ length: 16 }, (_, i) => ({
+        id: i + 1,
+        category: i % 2 === 0 ? "Internasional" : "Nasional",
+        title: `Juara ${(i % 3) + 1} Kompetisi ${["Debat Bahasa Arab", "Karya Tulis Ilmiah", "Tahfidz Quran", "Robotika", "Seni Lukis"][i % 5]} - ${["Qatar", "Malaysia", "Jakarta", "Bandung", "Mesir"][i % 5]}`,
+        desc: "Mahasiswa UIN Jakarta menorehkan prestasi gemilang di tingkat dunia melalui berbagai kompetisi bergengsi.",
+        image: ["https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=800&q=80", "IMG/IKHTIAR.jpg", "IMG/WISUDA.JPG", "IMG/WORKSHOP.jpg"][i % 4],
+        content: `<p>Prestasi membanggakan kembali diraih oleh mahasiswa UIN Syarif Hidayatullah Jakarta. Dalam ajang kompetisi tingkat ${i % 2 === 0 ? "Internasional" : "Nasional"} yang diselenggarakan di ${["Qatar", "Malaysia", "Jakarta", "Bandung", "Mesir"][i % 5]}, delegasi mahasiswa berhasil menyabet gelar Juara ${(i % 3) + 1}.</p>
+                <p>Kompetisi ini diikuti oleh lebih dari ${10 + i * 5} universitas dari berbagai negara/daerah.</p>`,
+      }));
+
+      // --- Data Tabel Prestasi (Baru) ---
+      const prestasiTableData = [
+        { id: "11190930000012", nama: "NAUFAL AULIA PRAMANA", fak: "SEKOLAH VOKASI", prodi: "D4 AKUNTANSI SEKTOR PUBLIK", pres: "Juara I", tkt: "Nasional", keg: "Alinea Essay Competition 2025" },
+        {
+          id: "11200950000045",
+          nama: "ASWIN DIAN RAMASIDIQ",
+          fak: "SEKOLAH VOKASI",
+          prodi: "D4 TEKNIK PENGELOLAAN DAN PEMELIHARAAN INFRASTRUKTUR SIPIL",
+          pres: "Juara III",
+          tkt: "Nasional",
+          keg: "VISION COMPETITION (Civil Case Innovation) Dedikasi 2025 Universitas Hasanuddin",
+        },
+        { id: "11210110000089", nama: "AUFA NASYWA RAHMAN", fak: "TEKNIK", prodi: "S1 TEKNOLOGI INFORMASI", pres: "Juara II", tkt: "Internasional", keg: "Huawei Developer Competition 2024" },
+        { id: "11220340000056", nama: "SITI NUR HALIZA", fak: "ILMU TARBIYAH DAN KEGURUAN", prodi: "S1 PENDIDIKAN BAHASA ARAB", pres: "Juara I", tkt: "Nasional", keg: "Festival Arab Nasional 2025" },
+        { id: "11230140000023", nama: "MUHAMMAD RIZKY", fak: "USHULUDDIN", prodi: "S1 ILMU AL-QURAN DAN TAFSIR", pres: "Harapan I", tkt: "Internasional", keg: "International Quran Recitation Malaysia" },
+      ];
+
+      let currentLang = "id";
+      let currentSlideIndex = 0;
+      let slideTimer;
+      let lastScrollPosition = 0;
+
+      function init() {
+        lucide.createIcons();
+        renderCarousel();
+        renderServices();
+        renderNews();
+        renderAllNews();
+        renderScholarships();
+        renderDocs();
+        renderOrmawa();
+        renderPrestasi();
+        renderAllPrestasi();
+        renderPrestasiTable();
+        updateUIStrings();
+        startSlideTimer();
+        fetchAndRenderAgenda();
+      }
+
+      function changeLanguage(lang) {
+        currentLang = lang;
+        const label = document.getElementById("currentLangLabel");
+        const flag = document.getElementById("currentLangFlagImg");
+
+        if (label) label.innerText = lang.toUpperCase();
+        if (flag) {
+          const flags = { id: "IMG/indo.png", en: "IMG/INGGRIS.png", ar: "IMG/ARAB.png" };
+          flag.src = flags[lang];
+        }
+
+        document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+        // Adjust specific elements for RTL if needed (like the hero deco)
+        const deco = document.getElementById("heroDeco");
+        const stats = document.getElementById("statsCard");
+        if (deco) {
+          if (lang === "ar") {
+            deco.style.left = "0";
+            deco.style.right = "auto";
+            deco.style.borderRadius = "0 80px 80px 0";
+            deco.style.transform = "translateX(-3rem)";
+            if (stats) {
+              stats.style.left = "auto";
+              stats.style.right = "-2rem";
+            }
+          } else {
+            deco.style.right = "0";
+            deco.style.left = "auto";
+            deco.style.borderRadius = "80px 0 0 80px";
+            deco.style.transform = "translateX(3rem)";
+            if (stats) {
+              stats.style.right = "auto";
+              stats.style.left = "-2rem";
+            }
+          }
+        }
+
+        updateUIStrings();
+
+        // Re-render components that might have language-dependent logic or date formats
+        renderServices();
+        renderScholarships();
+        renderDocs();
+        renderOrmawa();
+        renderPrestasi();
+        renderAllPrestasi();
+        renderPrestasiTable();
+      }
+
+      // ... (Fungsi Toggle Menu & Carousel & Slide Timer sama seperti sebelumnya) ...
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        if (menu) menu.classList.toggle("hidden");
+      }
+      function startSlideTimer() {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(nextSlide, 5000);
+      }
+      function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+        renderCarousel();
+        startSlideTimer();
+      }
+      function prevSlide() {
+        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+        renderCarousel();
+        startSlideTimer();
+      }
+      function goToSlide(index) {
+        currentSlideIndex = index;
+        renderCarousel();
+        startSlideTimer();
+      }
+      function renderCarousel() {
+        const container = document.getElementById("heroCarousel");
+        const dotsContainer = document.getElementById("carouselDots");
+        if (!container || !dotsContainer) return;
+        container.innerHTML = slides
+          .map(
+            (s, i) => `
+                <div class="slide ${i === currentSlideIndex ? "active" : ""}">
+                    <img src="${s.url}" onerror="this.src='https://placehold.co/600x800/png'" class="w-full h-full object-cover">
+                    <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#336799]/80 to-transparent p-10 text-white text-start">
+                        <p class="text-xs font-black uppercase tracking-[0.2em] text-blue-300 text-start">${s.title}</p>
+                        <p class="text-xl font-bold text-start text-start">${s.caption}</p>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+        dotsContainer.innerHTML = slides
+          .map((_, i) => `<button onclick="goToSlide(${i})" class="w-2 transition-all duration-300 rounded-full ${i === currentSlideIndex ? "h-8 bg-[#FFD700]" : "h-2 bg-white/50 hover:bg-white"}"></button>`)
+          .join("");
+      }
+      // ...
+
+      // --- UPDATE FUNGSI RENDER AGAR MULTI-BAHASA ---
+
+      function renderServices() {
+        const grid = document.getElementById("servicesGrid");
+        if (!grid) return;
+        const lang = translations[currentLang].services.items;
+        const detailText = currentLang === "ar" ? "التفاصيل" : currentLang === "en" ? "Detail" : "Detail"; // Fallback simple logic
+
+        grid.innerHTML = serviceData
+          .map(
+            (sv) => `
+                <div onclick="navigateTo('${sv.target}')" class="group bg-white p-8 rounded-[35px] shadow-sm border border-slate-200 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer text-start">
+                    <div class="${sv.color} text-[#336799] w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-[#336799] group-hover:text-white transition-all text-start">
+                        <i data-lucide="${sv.icon}"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3 text-start">${lang[sv.id]}</h3> <!-- Judul dari translations -->
+                    <!-- Desc bisa ditambahkan ke translations juga jika perlu, saat ini hardcoded di serviceData tidak digunakan -->
+                    <div class="flex items-center gap-2 text-xs font-bold text-[#336799] uppercase tracking-widest group-hover:gap-4 transition-all text-start mt-4">
+                        ${detailText} <i data-lucide="arrow-right" class="w-4 h-4 text-start"></i>
+                    </div>
+                </div>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function renderNews() {
+        const grid = document.getElementById("newsGrid");
+        if (!grid) return;
+        grid.innerHTML = newsData
+          .map(
+            (n) => `
+                <article onclick="showNewsDetail(${n.id}, 'home')" class="group cursor-pointer text-start">
+                    <div class="relative h-72 rounded-[40px] overflow-hidden mb-6 shadow-md border border-slate-100">
+                        <img src="${n.image}" onerror="this.src='https://placehold.co/400x300/png'" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000">
+                        <div class="absolute top-5 left-5">
+                            <span class="bg-[#336799] text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">${n.tag}</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 group-hover:text-[#336799] transition-colors leading-tight line-clamp-2">${n.title}</h3>
+                    <div class="mt-4 flex items-center gap-2 text-slate-400 text-xs font-bold">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> ${n.date}
+                    </div>
+                </article>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function renderAllNews() {
+        const grid = document.getElementById("allNewsGrid");
+        if (!grid) return;
+        const btnText = translations[currentLang].news.detailBtn;
+
+        grid.innerHTML = allNewsData
+          .map(
+            (n) => `
+                <article onclick="showNewsDetail(${n.id}, 'allNews')" class="group cursor-pointer bg-white rounded-[30px] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="${n.image}" onerror="this.src='https://placehold.co/400x300/png'" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-[#336799]/90 backdrop-blur-sm text-white text-[10px] font-black px-3 py-1.5 rounded-full uppercase tracking-widest shadow-lg">${n.tag}</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div class="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-3">
+                            <i data-lucide="calendar" class="w-3 h-3"></i> ${n.date}
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 group-hover:text-[#336799] transition-colors leading-tight line-clamp-2 mb-4">${n.title}</h3>
+                        <p class="text-slate-500 text-sm line-clamp-3 mb-4 flex-grow">${n.content}</p>
+                        <div class="flex items-center gap-2 text-xs font-bold text-[#336799] uppercase tracking-widest group-hover:gap-3 transition-all mt-auto">
+                            ${btnText} <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </div>
+                    </div>
+                </article>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function showNewsDetail(id, sourcePage = "home") {
+        lastScrollPosition = window.scrollY;
+        let news = newsData.find((n) => n.id === id) || allNewsData.find((n) => n.id === id);
+        if (!news) return;
+
+        const container = document.getElementById("beritaDetailContent");
+        const backContainer = document.getElementById("beritaDetailBackContainer");
+        const t = translations[currentLang].news;
+        const backText = sourcePage === "home" ? t.close : t.backAll;
+
+        backContainer.innerHTML = `
+                <button onclick="navigateTo('${sourcePage}', true)" class="flex items-center gap-2 text-[#336799] font-bold mb-12 hover:gap-4 transition-all">
+                    <i data-lucide="arrow-left"></i> ${backText}
+                </button>
+            `;
+
+        container.innerHTML = `
+                <img src="${news.image}" onerror="this.src='https://placehold.co/800x400/png'" class="w-full h-[400px] object-cover rounded-[50px] mb-12 shadow-2xl">
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="bg-[#336799] text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg">${news.tag}</span>
+                    <span class="text-slate-400 text-xs font-bold flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4"></i> ${news.date}</span>
+                </div>
+                <h1 class="text-4xl font-black text-slate-900 leading-tight mb-8">${news.title}</h1>
+                <div class="prose prose-lg text-slate-600 leading-relaxed max-w-none"><p class="mb-6">${news.content}</p></div>
+            `;
+        lucide.createIcons();
+        navigateTo("beritaDetail");
+      }
+
+      function renderScholarships() {
+        const grid = document.getElementById("scholarshipGrid");
+        if (!grid) return;
+        const t = translations[currentLang].scholarship;
+        grid.innerHTML = scholarshipData
+          .map(
+            (s) => `
+                <div class="bg-white p-10 rounded-[45px] border border-slate-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col h-full text-start">
+                    <div class="flex justify-between items-center mb-8">
+                        <span class="text-[10px] font-black uppercase tracking-widest px-4 py-1.5 bg-blue-50 text-[#336799] rounded-full">${s.type}</span>
+                        <span class="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full ${s.status === "Buka" ? "bg-green-50 text-green-600" : "bg-red-50 text-red-600"}">
+                            ${s.status === "Buka" ? t.open : t.closed}
+                        </span>
+                    </div>
+                    <h3 class="text-2xl font-black mb-4 group-hover:text-[#336799] transition-colors leading-tight">${s.name}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-10 flex-grow">${s.desc}</p>
+                    <button ${s.status === "Tutup" ? "disabled" : ""} class="w-full py-4 rounded-[20px] font-black text-sm transition-all text-center ${s.status === "Buka" ? "bg-[#336799] text-white hover:bg-[#26507a] shadow-xl shadow-blue-100" : "bg-slate-100 text-slate-400 cursor-not-allowed"}">
+                        ${s.status === "Buka" ? t.apply : t.closedBtn}
+                    </button>
+                </div>
+            `,
+          )
+          .join("");
+      }
+
+      function renderDocs() {
+        const body = document.getElementById("docTableBody");
+        if (!body) return;
+        body.innerHTML = docData
+          .map(
+            (d) => `
+                <tr class="hover:bg-blue-50/50 transition-colors group text-start">
+                    <td class="px-10 py-8 text-start">
+                        <div class="flex items-center gap-4 text-start">
+                            <div class="p-3 bg-slate-50 rounded-2xl text-[#336799] group-hover:bg-white transition-colors"><i data-lucide="file-text" class="w-5 h-5"></i></div>
+                            <span class="font-bold text-slate-800">${d.name}</span>
+                        </div>
+                    </td>
+                    <td class="px-10 py-8 text-start"><span class="px-4 py-1.5 bg-blue-50 text-[#336799] rounded-full text-[10px] font-black uppercase tracking-widest">${d.cat}</span></td>
+                    <td class="px-10 py-8 text-start text-slate-400 font-medium text-sm">${d.size}</td>
+                    <td class="px-10 py-8 text-end">
+                        <button class="p-4 bg-blue-50 text-[#336799] rounded-2xl hover:bg-[#336799] hover:text-white transition-all shadow-sm"><i data-lucide="download" class="w-5 h-5"></i></button>
+                    </td>
+                </tr>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function renderOrmawa() {
+        const grid = document.getElementById("ormawaGrid");
+        if (!grid) return;
+        const t = translations[currentLang].ormawa;
+        grid.innerHTML = ormawaData
+          .map(
+            (item, index) => `
+                <div onclick="showOrmawaDetail(${index})" class="bg-blue-50 p-8 rounded-[40px] border border-blue-100 text-start transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                    <div class="w-14 h-14 bg-[#336799] text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg overflow-hidden">
+                        ${item.image ? `<img src="${item.image}" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.innerHTML='<i data-lucide=\\'shield\\' class=\\'text-white\\'></i>'">` : `<i data-lucide="shield"></i>`}
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-800 mb-4">${item.name}</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">${item.desc}</p>
+                    <button class="font-bold text-[#336799] flex items-center gap-2">${t.detailBtn} <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
+                </div>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function showOrmawaDetail(index) {
+        lastScrollPosition = window.scrollY;
+        const item = ormawaData[index];
+        if (!item) return;
+        const container = document.getElementById("ormawaDetailContainer");
+        if (!container) return;
+        const t = translations[currentLang].ormawa;
+
+        // Update Back Button Text
+        const backBtn = document.getElementById("backToOrmawa");
+        if (backBtn) backBtn.innerText = t.backBtn;
+
+        // Generate mission list
+        const missionList =
+          item.mission && item.mission.length > 0 ? `<ol class="list-decimal pl-5 space-y-2 text-slate-600">${item.mission.map((m) => `<li>${m}</li>`).join("")}</ol>` : '<p class="text-slate-500 italic">Data misi belum tersedia.</p>';
+
+        // Generate proker cards
+        const programCards =
+          item.program && item.program.length > 0
+            ? `<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${item.program
+                      .map(
+                        (p) => `
+                        <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-[#336799] text-white flex items-center justify-center shrink-0"><i data-lucide="check" class="w-4 h-4"></i></div>
+                            <span class="font-bold text-slate-700 text-sm">${p}</span>
+                        </div>
+                    `,
+                      )
+                      .join("")}
+                   </div>`
+            : '<p class="text-slate-500 italic">Data program kerja belum tersedia.</p>';
+
+        container.innerHTML = `
+                <div class="p-10 md:p-14 bg-white">
+                    <div class="flex flex-col md:flex-row gap-10 items-center md:items-start border-b border-slate-100 pb-10 mb-10">
+                        <div class="w-32 h-32 md:w-48 md:h-48 rounded-[30px] overflow-hidden shadow-xl shrink-0 bg-slate-50 border-4 border-blue-50">
+                            ${item.image ? `<img src="${item.image}" class="w-full h-full object-cover" onerror="this.style.display='none';">` : `<div class="w-full h-full flex items-center justify-center text-[#336799]"><i data-lucide="shield" class="w-16 h-16"></i></div>`}
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h2 class="text-3xl md:text-5xl font-black text-[#336799] mb-4">${item.name}</h2>
+                            <p class="text-lg text-slate-500 font-medium">${item.desc}</p>
+                        </div>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">${t.about}</h3>
+                        <p class="text-slate-600 leading-relaxed text-justify text-lg bg-blue-50/50 p-6 rounded-3xl border border-blue-50">${item.definition || "Deskripsi detail belum tersedia."}</p>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">${t.bph}</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- BPH Cards (Sample logic) -->
+                            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-100 flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-[#336799] text-white flex items-center justify-center font-bold text-lg">K</div>
+                                <div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Ketua Umum</p><p class="text-lg font-bold text-slate-800">${item.structure?.ketua || "-"}</p></div>
+                            </div>
+                            <!-- ... other BPH ... -->
+                        </div>
+                        <div class="mt-8 flex justify-center">
+                            <a href="https://www.instagram.com/uinjktofficial" target="_blank" class="inline-flex items-center gap-2 text-pink-600 font-bold hover:text-pink-700 transition-colors bg-pink-50 px-6 py-3 rounded-2xl border border-pink-100 hover:shadow-md hover:-translate-y-0.5 transform duration-300">
+                                <i data-lucide="instagram" class="w-5 h-5"></i> Instagram Official
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-12">
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">${t.history}</h3>
+                        <p class="text-slate-600 leading-relaxed text-justify text-lg">${item.history || "Sejarah organisasi belum ditambahkan."}</p>
+                    </div>
+                    <div class="mb-12 grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm"><h3 class="text-lg font-black text-[#336799] mb-4">${t.vision}</h3><p class="text-slate-600 font-medium leading-relaxed italic">"${item.vision || "Visi belum tersedia."}"</p></div>
+                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm"><h3 class="text-lg font-black text-[#336799] mb-4">${t.mission}</h3>${missionList}</div>
+                    </div>
+                    <div class="mb-8"><h3 class="text-xl font-bold text-slate-900 mb-6">${t.proker}</h3>${programCards}</div>
+                </div>
+            `;
+        lucide.createIcons();
+        navigateTo("ormawaDetail");
+      }
+
+      function renderPrestasi() {
+        const grid = document.getElementById("prestasiGrid");
+        if (!grid) return;
+        const t = translations[currentLang].prestasi;
+        const limitedData = prestasiData.slice(0, 8);
+
+        grid.innerHTML = limitedData
+          .map(
+            (item, index) => `
+                <div onclick="showPrestasiDetail(${item.id - 1})" class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-xl overflow-hidden relative group cursor-pointer transition-all hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 -mx-8 -mt-8 mb-8 overflow-hidden flex-shrink-0">
+                        <img src="${item.image}" onerror="this.src='https://placehold.co/800x400/png'" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                    </div>
+                    <span class="text-[10px] font-black uppercase text-blue-500 tracking-widest block mb-2">${item.category}</span>
+                    <h4 class="text-xl font-bold text-slate-800 mb-4 line-clamp-2">${item.title}</h4>
+                    <p class="text-sm text-slate-500 mb-6 line-clamp-3 flex-grow">${item.desc}</p>
+                    <div class="flex items-center gap-2 text-[#336799] font-bold text-xs uppercase group-hover:gap-3 transition-all mt-auto">${t.detailBtn} <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                </div>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function renderAllPrestasi() {
+        const grid = document.getElementById("allPrestasiGrid");
+        if (!grid) return;
+        const t = translations[currentLang].prestasi;
+
+        grid.innerHTML = prestasiData
+          .map(
+            (item, index) => `
+                <div onclick="showPrestasiDetail(${item.id - 1})" class="bg-white p-8 rounded-[40px] border border-slate-100 shadow-xl overflow-hidden relative group cursor-pointer transition-all hover:-translate-y-2 hover:shadow-2xl flex flex-col h-full">
+                    <div class="h-48 bg-slate-100 -mx-8 -mt-8 mb-8 overflow-hidden flex-shrink-0">
+                        <img src="${item.image}" onerror="this.src='https://placehold.co/800x400/png'" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+                    </div>
+                    <span class="text-[10px] font-black uppercase text-blue-500 tracking-widest block mb-2">${item.category}</span>
+                    <h4 class="text-xl font-bold text-slate-800 mb-4 line-clamp-2">${item.title}</h4>
+                    <p class="text-sm text-slate-500 mb-6 line-clamp-3 flex-grow">${item.desc}</p>
+                    <div class="flex items-center gap-2 text-[#336799] font-bold text-xs uppercase group-hover:gap-3 transition-all mt-auto">${t.detailBtn} <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+                </div>
+            `,
+          )
+          .join("");
+        lucide.createIcons();
+      }
+
+      function renderPrestasiTable() {
+        const tbody = document.getElementById("prestasiTableBody");
+        if (!tbody) return;
+        tbody.innerHTML = prestasiTableData
+          .map(
+            (row, index) => `
+                <tr class="border-b border-slate-50 hover:bg-blue-50/50 transition-colors">
+                    <td class="p-5">${index + 1}</td>
+                    <td class="p-5 font-bold text-[#336799]">${row.id}</td>
+                    <td class="p-5 font-bold">${row.nama}</td>
+                    <td class="p-5 text-sm">${row.fak}</td>
+                    <td class="p-5 text-sm">${row.prodi}</td>
+                    <td class="p-5 text-center"><span class="font-bold text-green-600 bg-green-50 rounded-lg px-3 py-1 text-xs uppercase tracking-wider inline-block">${row.pres}</span></td>
+                    <td class="p-5 text-sm">${row.tkt}</td>
+                    <td class="p-5 font-medium text-slate-600">${row.keg}</td>
+                </tr>
+            `,
+          )
+          .join("");
+      }
+
+      function showPrestasiDetail(index) {
+        lastScrollPosition = window.scrollY;
+        const item = prestasiData[index];
+        if (!item) return;
+        const container = document.getElementById("prestasiDetailContent");
+
+        // Update Back Button
+        const backBtn = document.getElementById("backToPrestasiList");
+        if (backBtn) backBtn.innerText = translations[currentLang].prestasi.backList;
+
+        container.innerHTML = `
+                <div class="relative h-[400px] rounded-[50px] overflow-hidden mb-12 shadow-2xl">
+                    <img src="${item.image}" onerror="this.src='https://placehold.co/800x400/png'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10 right-10 text-white">
+                        <span class="bg-[#336799] text-white text-[10px] font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-lg mb-4 inline-block">${item.category}</span>
+                        <h1 class="text-3xl md:text-5xl font-black leading-tight">${item.title}</h1>
+                    </div>
+                </div>
+                <div class="prose prose-lg text-slate-600 leading-relaxed max-w-none">${item.content}</div>
+            `;
+        lucide.createIcons();
+        navigateTo("prestasiDetail");
+      }
+
+      // --- CORE UI UPDATE FUNCTION ---
+      function updateUIStrings() {
+        const l = translations[currentLang];
+        if (!l) return;
+
+        const safeSetText = (selector, text, isId = false) => {
+          const el = isId ? document.getElementById(selector) : document.querySelector(selector);
+          if (el) {
+            // Cek jika elemen memiliki icon, jangan hapus iconnya
+            if ((el.childNodes.length > 0 && el.querySelector("i")) || el.querySelector("img")) {
+              // Cari text node dan update
+              for (let i = 0; i < el.childNodes.length; i++) {
+                if (el.childNodes[i].nodeType === Node.TEXT_NODE && el.childNodes[i].textContent.trim() !== "") {
+                  el.childNodes[i].textContent = text + " ";
+                  return;
+                }
+              }
+              // Jika tidak ada text node, append (kasus fallback)
+              // Tapi untuk tombol dengan icon biasanya struktur: ICON SPAN atau SPAN ICON
+            } else {
+              el.innerText = text;
+            }
+          }
+        };
+
+        // Navbar & Mobile Menu
+        safeSetText(".nav-item-home", l.nav.home);
+        safeSetText(".nav-item-profile", l.nav.profile);
+        safeSetText(".dropdown-prakata", l.nav.prakata);
+        safeSetText(".dropdown-org-profile", l.nav.organisasi);
+        safeSetText(".dropdown-progker", l.nav.progker);
+        safeSetText(".dropdown-kinerja", l.nav.kinerja);
+        safeSetText(".dropdown-ppid", l.nav.ppid);
+        safeSetText(".dropdown-scholarship", l.nav.scholarship);
+        safeSetText(".dropdown-org", l.nav.org);
+        safeSetText(".nav-item-doc", l.nav.doc);
+        safeSetText(".nav-item-service", l.nav.service);
+        safeSetText(".dropdown-skpi", l.nav.skpi);
+        safeSetText(".dropdown-prestasi", l.nav.prestasi);
+        safeSetText(".dropdown-awards", l.nav.awards);
+
+        safeSetText("sectionAgendaTitle", l.agenda.title, true);
+        safeSetText("sectionAgendaSub", l.agenda.sub, true); 
+
+        // Hero
+        safeSetText("heroTitle", l.hero.title, true);
+        safeSetText("heroSub", l.hero.sub, true);
+        safeSetText("heroBtn1", l.hero.btn1, true);
+        safeSetText("heroBtn2", l.hero.btn2, true);
+        safeSetText("statsLabel", l.hero.stats, true);
+
+        // Section Titles
+        safeSetText("sectionServicesTitle", l.services.title, true);
+        safeSetText("sectionNewsTitle", l.news.title, true);
+        safeSetText("sectionNewsSub", l.news.sub, true);
+        safeSetText("btnAllNews", l.news.btnAll, true);
+        safeSetText("backToHome", l.news.backHome, true);
+        safeSetText("pageAllNewsTitle", l.news.pageAllTitle, true);
+        safeSetText("pageAllNewsSub", l.news.pageAllSub, true);
+
+        // Page Titles
+        safeSetText("pageOrgTitle", l.orgPage.title, true);
+        safeSetText("pageOrgSub", l.orgPage.sub, true);
+        safeSetText("labelKabiro", l.orgPage.kabiro, true);
+
+        safeSetText("pageSkpiTitle", l.skpi.title, true);
+        safeSetText("pageSkpiDesc", l.skpi.desc, true);
+        safeSetText("skpiFeature1Title", l.skpi.f1t, true);
+        safeSetText("skpiFeature1Desc", l.skpi.f1d, true);
+        safeSetText("skpiFeature2Title", l.skpi.f2t, true);
+        safeSetText("skpiFeature2Desc", l.skpi.f2d, true);
+        safeSetText("skpiFlowTitle", l.skpi.flowTitle, true);
+        safeSetText("skpiStep1Title", l.skpi.s1t, true);
+        safeSetText("skpiStep1Desc", l.skpi.s1d, true);
+
+        safeSetText("pagePrestasiTitle", l.prestasi.title, true);
+        safeSetText("pagePrestasiSub", l.prestasi.sub, true);
+        safeSetText("btnMorePrestasi", l.prestasi.btnMore, true);
+        safeSetText("tablePrestasiTitle", l.prestasi.tableTitle, true);
+        safeSetText("backToPrestasiMain", l.prestasi.backMain, true);
+        safeSetText("pageAllPrestasiTitle", l.prestasi.pageAllTitle, true);
+        safeSetText("pageAllPrestasiSub", l.prestasi.pageAllSub, true);
+        // Table Headers Prestasi
+        safeSetText("thID", l.prestasi.th.id, true);
+        safeSetText("thName", l.prestasi.th.name, true);
+        safeSetText("thFac", l.prestasi.th.fac, true);
+        safeSetText("thProdi", l.prestasi.th.prodi, true);
+        safeSetText("thAch", l.prestasi.th.ach, true);
+        safeSetText("thLevel", l.prestasi.th.level, true);
+        safeSetText("thEvent", l.prestasi.th.event, true);
+
+        safeSetText("pageScholarshipTitle", l.scholarship.title, true);
+        safeSetText("pageScholarshipSub", l.scholarship.sub, true);
+
+        safeSetText("pageOrmawaTitle", l.ormawa.title, true);
+        safeSetText("pageOrmawaSub", l.ormawa.sub, true);
+        safeSetText("backToOrmawa", l.ormawa.backBtn, true);
+
+        safeSetText("pageDocTitle", l.docs.title, true);
+        safeSetText("pageDocSub", l.docs.sub, true);
+        safeSetText("thFileName", l.docs.th.name, true);
+        safeSetText("thCategory", l.docs.th.cat, true);
+        safeSetText("thSize", l.docs.th.size, true);
+
+        // Footer
+        safeSetText("footerDesc", l.footer.desc, true);
+        safeSetText("footerLinksTitle", l.footer.links, true);
+        safeSetText("footerServicesTitle", l.footer.services, true);
+        safeSetText("footerContactTitle", l.footer.contact, true);
+        safeSetText("linkPortal", l.footer.lPortal, true);
+        safeSetText("linkLib", l.footer.lLib, true);
+        safeSetText("linkJournal", l.footer.lJournal, true);
+        safeSetText("linkTracer", l.footer.lTracer, true);
+        safeSetText("linkScholarship", l.footer.sSch, true);
+        safeSetText("linkSkpi", l.footer.sSkpi, true);
+        safeSetText("linkDocs", l.footer.sDoc, true);
+      }
+
+      function navigateTo(pageId, restoreScroll = false) {
+        document.querySelectorAll(".page-section").forEach((s) => s.classList.remove("active"));
+        const target = document.getElementById(pageId + "Page");
+        if (target) target.classList.add("active");
+        if (restoreScroll) {
+          window.scrollTo(0, lastScrollPosition);
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }
+
+      function handleEnter(e) {
+        if (e.key === "Enter") handleChatSend();
+      }
+
+      async function fetchAndRenderAgenda() {
+  const grid = document.getElementById("agendaGrid");
+  const loader = document.getElementById("agendaLoader");
+  const emptyState = document.getElementById("agendaEmpty");
+  
+  if (!grid || !loader || !emptyState) return;
+
+  try {
+    const response = await fetch(AGENDA_API_URL);
+    const result = await response.json();
+
+    loader.classList.add("hidden");
+
+    if (result.status === "success" && result.data.length > 0) {
+      // Urutkan dari yang terbaru (berdasarkan baris spreadsheet terbawah)
+      const agendaData = result.data.reverse().slice(0, 6);
+      
+      grid.innerHTML = agendaData.map(a => {
+        // Logika Tanggal
+        let displayTanggal = a.tglMulai;
+        if (a.tglSelesai && a.tglSelesai.trim() !== "") {
+          displayTanggal = `${a.tglMulai} - ${a.tglSelesai}`;
+        }
+
+        // Logika Waktu
+        let displayWaktu = "Sepanjang Hari";
+        if (a.wktMulai && a.wktMulai.trim() !== "") {
+          displayWaktu = a.wktSelesai ? `${a.wktMulai} - ${a.wktSelesai}` : `${a.wktMulai} - Selesai`;
+        }
+
+        return `
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
+            <div class="mb-4 flex items-center">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-[#336799] border border-blue-100">
+                <i data-lucide="users" class="w-3 h-3 mr-1.5"></i>
+                ${a.ukm || 'Umum'}
+              </span>
+            </div>
+            
+            <div class="flex items-start gap-4 mb-4">
+              <div class="flex-shrink-0 flex flex-col items-center justify-center w-14 h-14 bg-slate-50 rounded-2xl border border-slate-100 group-hover:bg-[#336799] transition-colors">
+                <i data-lucide="calendar-days" class="w-6 h-6 text-[#336799] group-hover:text-white mb-1"></i>
+              </div>
+              <div class="flex-grow pt-1">
+                <h4 class="text-lg font-bold text-slate-800 group-hover:text-[#336799] transition-colors leading-tight line-clamp-2">
+                  ${a.judul}
+                </h4>
+              </div>
+            </div>
+            
+            <div class="space-y-2 mb-4 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+              <div class="flex items-start gap-2.5 text-sm text-slate-600">
+                <i data-lucide="calendar" class="w-4 h-4 text-slate-400 shrink-0 mt-0.5"></i>
+                <span class="font-medium">${displayTanggal}</span>
+              </div>
+              <div class="flex items-start gap-2.5 text-sm text-slate-600">
+                <i data-lucide="clock" class="w-4 h-4 text-slate-400 shrink-0 mt-0.5"></i>
+                <span class="font-medium">${displayWaktu}</span>
+              </div>
+              <div class="flex items-start gap-2.5 text-sm text-slate-600">
+                <i data-lucide="map-pin" class="w-4 h-4 text-slate-400 shrink-0 mt-0.5"></i>
+                <span class="font-medium line-clamp-2">${a.tempat || '-'}</span>
+              </div>
+            </div>
+            
+            <div class="mt-auto pt-2 border-t border-slate-100">
+              <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">
+                ${a.deskripsi || 'Tidak ada deskripsi.'}
+              </p>
+            </div>
+          </div>
+        `;
+      }).join("");
+      
+      grid.classList.remove("hidden");
+      lucide.createIcons();
+    } else {
+      emptyState.classList.remove("hidden");
+    }
+  } catch (error) {
+    console.error("Error fetching agenda:", error);
+    loader.classList.add("hidden");
+    emptyState.classList.remove("hidden");
+  }
+}
+      init();
+    </script>
+  </body>
+</html>
