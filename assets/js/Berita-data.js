@@ -11,7 +11,7 @@ const BERITA_DATA = [
         'Mengusung tema "Seeds of Change: Youth Cooperatives Cultivating Culture, Nature, and Community for a Sustainable Future", JAMKOPNAS 2026 menjadi forum bagi mahasiswa untuk memaparkan riset dan inovasi usaha koperasi dari berbagai daerah. Tahun ini merupakan pertama kalinya JAMKOPNAS diselenggarakan di UIN Jakarta.'
     ],
 
-    image: "../../assets/img/icons/Gaza.jpg",
+    image: "assets/img/icons/Gaza.jpg",
 
     day: "29",
     month: "Jul",
@@ -26,7 +26,7 @@ const BERITA_DATA = [
   {
     id: "pelantikan-puskomnas",
     title: "Pelantikan Puskomnas Periode 2026-2028 Warnai Puncak Peringatan Milad ke-40 FSLDK",
-    image: "../../assets/img/icons/Menhwa.jpeg",
+    image: "assets/img/icons/Menhwa.jpeg",
     day: "16",
     month: "Jul",
     authors: ["Fakhruddin", "Primandha Rachma Auzia"],
@@ -35,7 +35,7 @@ const BERITA_DATA = [
   {
     id: "fsldk-banten",
     title: "Suksesnya FSLDK X FSLDK Banten 2026 Tandai Beralihnya Kepemimpinan Puskomda ...",
-    image: "../../assets/img/icons/Minat_dan_bakat.jpg",
+    image: "assets/img/icons/Minat_dan_bakat.jpg",
     day: "12",
     month: "Jul",
     authors: ["Fakhruddin", "Primandha Rachma Auzia"],
@@ -44,7 +44,7 @@ const BERITA_DATA = [
   {
     id: "grow-2026",
     title: "Dari Ide ke Aksi, GROW 2026 Bekali Mahasiswa Menjadi Future Entrepreneurs",
-    image: "../../assets/img/icons/Student.jpg",
+    image: "assets/img/icons/Student.jpg",
     day: "07",
     month: "Jul",
     authors: ["Sabrina Izzatun Nisa", "Primandha Rachma Auzia"],
