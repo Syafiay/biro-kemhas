@@ -14,17 +14,17 @@
 
 const HERO_SLIDES = [
   {
-    image: "/assets/img/icons/Student.jpg",
+    image: "../assets/img/icons/Student.jpg",
     eyebrow: "Berita Prestasi",
     title: "Penyerahan Penghargaan Mahasiswa Berprestasi Nasional"
   },
   {
-    image: "/assets/img/icons/Minat_dan_bakat.jpg",
+    image: "../assets/img/icons/Minat_dan_bakat.jpg",
     eyebrow: "Agenda Kampus",
     title: "Pekan Orientasi Mahasiswa Baru 2026"
   },
   {
-    image: "/assets/img/icons/Jannata.png",
+    image: "../assets/img/icons/Jannata.png",
     eyebrow: "Info Beasiswa",
     title: "Pembukaan Pendaftaran Beasiswa KIP Kuliah"
   }
