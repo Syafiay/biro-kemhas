@@ -33,7 +33,7 @@ function createUkmCard(ukm) {
   // Tombol/tag "Detail" -> menuju halaman detail dengan query id
   const tag = document.createElement("a");
   tag.className = "card-tag";
-  tag.href = `/pages/ukm/ukm-detail.html?id=${encodeURIComponent(ukm.id)}`;
+  tag.href = `../pages/ukm/ukm-detail.html?id=${encodeURIComponent(ukm.id)}`;
   tag.textContent = "Detail →";
 
   // Susun semua elemen ke dalam card
