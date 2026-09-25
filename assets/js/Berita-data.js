@@ -11,7 +11,7 @@ const BERITA_DATA = [
         'Mengusung tema "Seeds of Change: Youth Cooperatives Cultivating Culture, Nature, and Community for a Sustainable Future", JAMKOPNAS 2026 menjadi forum bagi mahasiswa untuk memaparkan riset dan inovasi usaha koperasi dari berbagai daerah. Tahun ini merupakan pertama kalinya JAMKOPNAS diselenggarakan di UIN Jakarta.'
     ],
 
-    image: "assets/img/icons/Gaza.jpg",
+    image: "../../assets/img/icons/Gaza.jpg",
 
     day: "29",
     month: "Jul",
