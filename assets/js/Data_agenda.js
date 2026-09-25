@@ -6,7 +6,7 @@
 const cardData = [
   {
     id: 1,
-    image: "/assets/img/icons/Gaza.jpg",
+    image: "../assets/img/icons/Gaza.jpg",
     day: "17",
     month: "JUL",
     badgeColor: "#4b3fd6",
@@ -17,7 +17,7 @@ const cardData = [
   },
   {
     id: 2,
-    image: "/assets/img/icons/Minat_dan_bakat.jpg",
+    image: "../assets/img/icons/Minat_dan_bakat.jpg",
     day: "27",
     month: "JUN",
     badgeColor: "#0f9d58",
@@ -28,7 +28,7 @@ const cardData = [
   },
   {
     id: 3,
-    image: "/assets/img/icons/student.jpg",
+    image: "../assets/img/icons/student.jpg",
     day: "26",
     month: "JUN",
     badgeColor: "#e07b00",
@@ -39,7 +39,7 @@ const cardData = [
   },
   {
     id: 4,
-    image: "/assets/img/icons/ldk_syahid_jakarta.jpg",
+    image: "../assets/img/icons/ldk_syahid_jakarta.jpg",
     day: "24",
     month: "JUN",
     badgeColor: "#d92626",
