@@ -26,7 +26,7 @@ const UKM_DATA = [
     name: "LDK Syahid",
     desc: "Unit Kegiatan Mahasiswa LDK Syahid",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/ldk sYAHID.JPEG",
+    img: "assets/img/icons/ldk sYAHID.JPEG",
     glow: "cyan",
     about: "LDK Syahid adalah Lembaga Dakwah Kampus UIN Syarif Hidayatullah Jakarta yang bergerak di bidang pembinaan keislaman, syiar, dan pengembangan karakter mahasiswa muslim melalui berbagai program keagamaan. ",
     content: [
@@ -45,7 +45,7 @@ const UKM_DATA = [
     name: "UKM Teater Syahid",
     desc: "Teater Syahid",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/tetaer syahid stroke.png",
+    img: "assets/img/icons/tetaer syahid stroke.png",
     glow: "purple",
     about: "UKM Teater Syahid adalah wadah bagi mahasiswa yang tertarik pada seni peran, penyutradaraan, dan produksi pertunjukan panggung.",
     programKerja: [
@@ -60,7 +60,7 @@ const UKM_DATA = [
     name: "WIRA DIARMA",
     desc: "Unit Kegiatan WIRA DIARMA",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/Lihat desain Canva saya!.png",
+    img: "assets/img/icons/Lihat desain Canva saya!.png",
     glow: "pink",
     about: "WIRA DIARMA merupakan unit kegiatan mahasiswa yang berfokus pada kedisiplinan, bela negara, dan pengembangan jiwa kepemimpinan.",
     programKerja: [
@@ -75,7 +75,7 @@ const UKM_DATA = [
     name: "FORMABI KIP",
     desc: "Unit Penerima KIP",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/Logo FORMABI-KIP-1.png",
+    img: "assets/img/icons/Logo FORMABI-KIP-1.png",
     glow: "green",
     about: "FORMABI KIP adalah forum mahasiswa penerima Kartu Indonesia Pintar (KIP) Kuliah yang saling mendukung secara akademik maupun non-akademik.",
     programKerja: [
@@ -90,7 +90,7 @@ const UKM_DATA = [
     name: "UKM FORSA UIN",
     desc: "Unit Kegiatan Mahasiswa FORSA",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/Logo Forsa.png",
+    img: "assets/img/icons/Logo Forsa.png",
     glow: "yellow",
     about: "UKM FORSA adalah unit kegiatan mahasiswa di bidang olahraga yang mewadahi minat dan bakat mahasiswa dalam berbagai cabang olahraga.",
     programKerja: [
@@ -105,7 +105,7 @@ const UKM_DATA = [
     name: "UKM FRESH UIN",
     desc: "Unit FRESH UIN",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/LOGO FRESH 1.png",
+    img: "assets/img/icons/LOGO FRESH 1.png",
     glow: "green",
     about: "UKM FRESH adalah komunitas mahasiswa yang fokus pada isu lingkungan, gaya hidup sehat, dan kegiatan sosial berbasis kepedulian lingkungan.",
     programKerja: [
@@ -120,7 +120,7 @@ const UKM_DATA = [
     name: "UKM HIQMA",
     desc: "Unit Kegiatan HIQMA",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/Logo HIQMA.png",
+    img: "assets/img/icons/Logo HIQMA.png",
     glow: "green",
     about: "HIQMA (Himpunan Qari dan Qariah Mahasiswa) adalah UKM yang membina mahasiswa dalam bidang tilawah, tahfiz, dan seni baca Al-Qur'an.",
     programKerja: [
@@ -135,7 +135,7 @@ const UKM_DATA = [
     name: "LPM Institut",
     desc: "Unit Kegiatan Mahasiswa LPM Institut",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "/assets/img/icons/Logo INSTITUT2 merah(1).png",
+    img: "assets/img/icons/Logo INSTITUT2 merah(1).png",
     glow: "pink",
     about: "LPM Institut adalah Lembaga Pers Mahasiswa yang bergerak di bidang jurnalistik, penulisan, dan penerbitan media kampus.",
     programKerja: [
@@ -150,7 +150,7 @@ const UKM_DATA = [
     name: "UKM KALACITRA",
     desc: "Unit Kegiatan Mahasiswa KALACITRA",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "/assets/img/icons/Logo KALACITRA.png",
+    img: "assets/img/icons/Logo KALACITRA.png",
     glow: "green",
     about: "UKM KALACITRA adalah unit kegiatan mahasiswa di bidang fotografi dan videografi yang mewadahi kreativitas visual mahasiswa.",
     programKerja: [
@@ -165,7 +165,7 @@ const UKM_DATA = [
     name: "UKM KMM RIAK",
     desc: "Unit Kegiatan Mahasiswa KMM RIAK",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "/assets/img/icons/Logo KMM RIAK.PNG",
+    img: "assets/img/icons/Logo KMM RIAK.PNG",
     glow: "green",
     about: "KMM RIAK adalah unit kegiatan mahasiswa pecinta alam yang aktif dalam kegiatan alam bebas, konservasi, dan penyelamatan lingkungan.",
     programKerja: [
