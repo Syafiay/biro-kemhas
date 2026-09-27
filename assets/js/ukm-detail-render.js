@@ -52,7 +52,7 @@ function renderNotFound(container) {
 
   const backBtn = document.createElement("a");
   backBtn.className = "card-tag";
-  backBtn.href = "/pages/ukm/ukm.html";
+  backBtn.href = "/biro-kemhas/pages/ukm/ukm.html";
   backBtn.textContent = "Kembali ke Daftar UKM →";
 
   wrap.append(msg, backBtn);
