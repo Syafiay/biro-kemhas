@@ -26,7 +26,7 @@ const UKM_DATA = [
     name: "LDK Syahid",
     desc: "Unit Kegiatan Mahasiswa LDK Syahid",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/ldk sYAHID.JPEG",
+    img: "assets/img/icons/ldk sYAHID.JPEG",
     glow: "cyan",
     about: "LDK Syahid adalah Lembaga Dakwah Kampus UIN Syarif Hidayatullah Jakarta yang bergerak di bidang pembinaan keislaman, syiar, dan pengembangan karakter mahasiswa muslim melalui berbagai program keagamaan. ",
     content: [
@@ -45,7 +45,7 @@ const UKM_DATA = [
     name: "UKM Teater Syahid",
     desc: "Teater Syahid",
     tagline: "Kamu dan kita adalah saudara, Allahuakbar!",
-    img: "../assets/img/icons/tetaer syahid stroke.png",
+    img: "assets/img/icons/tetaer syahid stroke.png",
     glow: "purple",
     about: "UKM Teater Syahid adalah wadah bagi mahasiswa yang tertarik pada seni peran, penyutradaraan, dan produksi pertunjukan panggung.",
     programKerja: [
