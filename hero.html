@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Kemahasiswaan</title>
+     <link rel="stylesheet" href="/assets/css/hero.css" class="rel">
+
+</head>
+<body>
+<!-- components/hero.html -->
+
+<section id="homePage" class="page-section is-active">
+  <div class="hero">
+    <!-- dekorasi background -->
+    <div id="heroDeco" class="hero-deco"></div>
+    <div class="hero-blur"></div>
+
+    <div class="hero-container">
+
+      <!-- Kolom kiri: teks -->
+      <div class="hero-text">
+        <h1 id="heroTitle" class="hero-title">Internship Kemahasiswaan UIN JAKARTA</h1>
+        <p id="heroSub" class="hero-sub">
+         Internship Kemahasiswaan UIN Syarif Hidayatullah Jakarta merupakan wadah pengembangan potensi, kreativitas, dan profesionalisme mahasiswa di lingkungan Biro Administrasi Akademik, Kemahasiswaan, dan Kerjasama (AAKK). Melalui program ini, para peserta dibekali pengalaman praktis langsung dalam pengelolaan media informasi, pengembangan teknologi web, tata kelola administrasi, serta eksekusi berbagai program kerja kemahasiswaan. Lebih dari sekadar program magang internal, internship ini menjadi ruang kolaborasi lintas divisi untuk mencetak sumber daya mahasiswa yang adaptif, solutif, dan siap menghadapi dunia kerja profesional.
+        </p>
+
+        <div class="hero-actions">
+          <button type="button" class="btn-hero-primary" id="heroBtn1" onclick="navigateTo('beasiswa')">
+            <span>Info Internship Kemhas</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+          <button type="button" class="btn-hero-secondary" id="heroBtn2" onclick="navigateTo('agenda')">
+            Daftar Internship Kemhas
+          </button>
+        </div>
+      </div>
+
+      <!-- Kolom kanan: carousel + stats card -->
+      <div class="hero-visual">
+
+        <div id="heroCarousel" class="hero-carousel">
+          <!-- slide di-generate oleh hero.js dari HERO_SLIDES -->
+        </div>
+
+        <div class="hero-carousel-nav">
+          <button type="button" class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Slide sebelumnya">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Slide berikutnya">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <div id="carouselDots" class="hero-carousel-dots"></div>
+
+        <div id="statsCard" class="hero-stats-card">
+          <div class="hero-stats-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="hero-stats-label" id="statsLabel">Mahasiswa Aktif</p>
+            <p class="hero-stats-value" id="statsValue">32.000+</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<script src="/assets/js/hero.js"></script>
+
+    
+</body>
+</html>
